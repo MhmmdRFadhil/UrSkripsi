@@ -3,8 +3,20 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/background_circle_button.xml" value="0.2324074074074074" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/on_boarding_indicator.xml" value="0.23055555555555557" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/on_boarding_indicator_selected.xml" value="0.23055555555555557" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/on_boarding_indicator_unselected.xml" value="0.23055555555555557" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/onboarding_indicator_selected.xml" value="0.23055555555555557" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/onboarding_indicator_unselected.xml" value="0.23055555555555557" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_main.xml" value="0.19444444444444445" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_on_boarding.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_splash_screen.xml" value="0.234375" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/indicator_view_pager.xml" value="0.264" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_content_on_boarding.xml" value="0.2" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_content_onboarding.xml" value="0.4" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_on_boarding.xml" value="0.20277777777777778" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_onboarding.xml" value="0.264" />
       </map>
     </option>
   </component>

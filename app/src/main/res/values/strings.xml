@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">UrSkripsi</string>
+    <string name="next">Next</string>
+    <string name="get_started">Get Started</string>
 </resources>

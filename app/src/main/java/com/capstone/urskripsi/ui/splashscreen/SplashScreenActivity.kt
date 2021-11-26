@@ -10,9 +10,9 @@ import android.os.Handler
 import android.os.Looper
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsControllerCompat
-import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivitySplashScreenBinding
+import com.capstone.urskripsi.ui.onboarding.OnBoardingActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
@@ -25,7 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, OnBoardingActivity::class.java))
             overridePendingTransition(R.anim.fade_in, R.anim.fade_out)
             finish()
         }, TIMEOUT.toLong())
