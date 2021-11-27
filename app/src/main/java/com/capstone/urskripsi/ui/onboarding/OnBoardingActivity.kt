@@ -37,22 +37,22 @@ class OnBoardingActivity : AppCompatActivity() {
             add(
                 OnBoarding(
                     R.drawable.on_boarding_bg_1,
-                    "Lorem ipsum dolor",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis elementum neque congue pharetra. Ut sed massa dictum, imperdiet enim molestie, pulvinar lectus."
+                    applicationContext.resources.getString(R.string.title1),
+                    applicationContext.resources.getString(R.string.description1)
                 )
             )
             add(
                 OnBoarding(
                     R.drawable.on_boarding_bg_2,
-                    "Lorem ipsum dolor",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis elementum neque congue pharetra. Ut sed massa dictum, imperdiet enim molestie, pulvinar lectus."
+                    applicationContext.resources.getString(R.string.title2),
+                    applicationContext.resources.getString(R.string.description2)
                 )
             )
             add(
                 OnBoarding(
                     R.drawable.on_boarding_bg_3,
-                    "Lorem ipsum dolor",
-                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras iaculis elementum neque congue pharetra. Ut sed massa dictum, imperdiet enim molestie, pulvinar lectus."
+                    applicationContext.resources.getString(R.string.title3),
+                    applicationContext.resources.getString(R.string.description3)
                 )
             )
         }

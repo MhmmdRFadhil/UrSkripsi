@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">UrSkripsi</string>
     <string name="next">Next</string>
-    <string name="get_started">Get Started</string>
+    <string name="get_started">Ayo Mulai</string>
+
+
+    // onboard text
+    <string name="title1">Atur progressmu!</string>
+    <string name="description1">Atur progressmu sehingga lancar dalam mengerjakan skripsimu.</string>
+    <string name="title2">Perhatikan waktumu!</string>
+    <string name="description2">Selalu perhatikan waktumu dalam pengerjaan skripsimu.</string>
+    <string name="title3">Luluslah tepat waktu!</string>
+    <string name="description3">Jadikan kegiatan skripsimu lancar hingga tepat di waktu lulusmu.</string>
 </resources>
