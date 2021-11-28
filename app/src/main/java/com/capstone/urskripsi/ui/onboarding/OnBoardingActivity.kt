@@ -32,7 +32,7 @@ class OnBoardingActivity : AppCompatActivity() {
         }
 
         // setup data onboarding
-        val onBoardingData: MutableList<OnBoarding> = ArrayList()
+        val onBoardingData: ArrayList<OnBoarding> = ArrayList()
         onBoardingData.apply {
             add(
                 OnBoarding(
@@ -70,7 +70,7 @@ class OnBoardingActivity : AppCompatActivity() {
                     }
                 }
 
-                layoutIndicator.btnGetStarted.setOnClickListener {
+                btnGetStarted.setOnClickListener {
                     // save data
                     savePrefData()
                     startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))

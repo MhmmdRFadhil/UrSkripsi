@@ -1,6 +1,5 @@
 package com.capstone.urskripsi.ui.splashscreen
 
-import android.annotation.SuppressLint
 import android.content.Intent
 import android.graphics.Color
 import android.os.Build
@@ -14,7 +13,6 @@ import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivitySplashScreenBinding
 import com.capstone.urskripsi.ui.onboarding.OnBoardingActivity
 
-@SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivitySplashScreenBinding

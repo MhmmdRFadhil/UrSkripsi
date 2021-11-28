@@ -8,4 +8,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="background">#F9F9F9</color>
     <color name="unselectedTab">#E5E5E5</color>
+    <color name="buttonRippleColor">#33AAAAAA</color>
+    <color name="textLogout">#ff3333</color>
 </resources>
