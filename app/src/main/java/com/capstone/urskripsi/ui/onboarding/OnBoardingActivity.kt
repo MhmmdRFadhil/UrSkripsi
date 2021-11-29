@@ -5,10 +5,11 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityOnBoardingBinding
+import com.capstone.urskripsi.utils.Utility.hide
+import com.capstone.urskripsi.utils.Utility.show
 import com.google.android.material.tabs.TabLayout
 
 class OnBoardingActivity : AppCompatActivity() {
@@ -83,15 +84,15 @@ class OnBoardingActivity : AppCompatActivity() {
                     override fun onTabSelected(tab: TabLayout.Tab?) {
                         position = tab!!.position
                         if (tab.position == onBoardingData.size - 1) {
-                            btnGetStarted.visibility = View.VISIBLE
-                            tvNext.visibility = View.GONE
-                            tabLayout.visibility = View.GONE
-                            dotsIndicator.visibility = View.GONE
+                            btnGetStarted.show()
+                            tvNext.hide()
+                            tabLayout.hide()
+                            dotsIndicator.hide()
                         } else {
-                            btnGetStarted.visibility = View.GONE
-                            tvNext.visibility = View.VISIBLE
-                            tabLayout.visibility = View.VISIBLE
-                            dotsIndicator.visibility = View.VISIBLE
+                            btnGetStarted.hide()
+                            tvNext.show()
+                            tabLayout.show()
+                            dotsIndicator.show()
                             tvNext.text = getString(R.string.next)
                         }
                     }

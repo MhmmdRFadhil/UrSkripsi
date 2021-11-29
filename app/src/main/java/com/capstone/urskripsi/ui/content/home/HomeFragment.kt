@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
-import com.capstone.urskripsi.utils.setTitleColor
+import com.capstone.urskripsi.utils.Utility.setTitleColor
 
 class HomeFragment : Fragment() {
 

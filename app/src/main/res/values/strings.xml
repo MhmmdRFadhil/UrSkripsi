@@ -22,4 +22,6 @@
     <string name="change_password">Ubah kata sandi</string>
     <string name="about">Tentang</string>
     <string name="developer">Pengembang</string>
+    <string name="lorem_ipsum_dolor">Lorem ipsum dolor</string>
+    <string name="logout">Keluar</string>
 </resources>
