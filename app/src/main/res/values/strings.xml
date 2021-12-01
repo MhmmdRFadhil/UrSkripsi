@@ -11,7 +11,21 @@
     <string name="title3">Luluslah tepat waktu!</string>
     <string name="description3">Jadikan kegiatan skripsimu lancar hingga tepat di waktu lulusmu.</string>
 
-    <!--Bottom Navigation Text-->
+    <!-- Login Text -->
+    <string name="login_image_background">Login Image Background</string>
+    <string name="masuk">Masuk</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="ingatkan_saya">Ingatkan saya</string>
+    <string name="lupa_password">Lupa password?</string>
+    <string name="atau_masuk_melalui">atau masuk melalui</string>
+    <string name="google_icon">Google Icon</string>
+    <string name="tidak_memiliki_akun">Tidak memiliki akun?</string>
+    <string name="daftar">Daftar</string>
+    <string name="nama_lengkap">Nama lengkap</string>
+    <string name="email">Email</string>
+
+    <!-- Bottom Navigation Text-->
     <string name="home">Home</string>
     <string name="leaderboard">Leaderboard</string>
     <string name="profile">Profile</string>

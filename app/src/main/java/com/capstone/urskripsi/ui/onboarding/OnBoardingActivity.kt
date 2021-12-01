@@ -8,6 +8,7 @@ import android.os.Bundle
 import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityOnBoardingBinding
+import com.capstone.urskripsi.ui.login.LoginActivity
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
 import com.google.android.material.tabs.TabLayout
@@ -74,7 +75,7 @@ class OnBoardingActivity : AppCompatActivity() {
                 btnGetStarted.setOnClickListener {
                     // save data
                     savePrefData()
-                    startActivity(Intent(this@OnBoardingActivity, MainActivity::class.java))
+                    startActivity(Intent(this@OnBoardingActivity, LoginActivity::class.java))
                     finish()
                 }
 

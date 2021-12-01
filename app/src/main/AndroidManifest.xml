@@ -10,6 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UrSkripsi">
         <activity
+            android:name=".ui.login.LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.UrSkripsi.NoActionBar" />
+        <activity
             android:name=".ui.onboarding.OnBoardingActivity"
             android:exported="false"
             android:theme="@style/Theme.UrSkripsi.NoActionBar" />
