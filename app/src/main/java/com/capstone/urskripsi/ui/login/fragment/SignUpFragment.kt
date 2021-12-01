@@ -35,13 +35,13 @@ class SignUpFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         if (view != null) {
             if (view.id == binding?.tvMasuk?.id) {
-                val mLoginFragment = LoginFragment()
+                val mLoginFragment = SignInFragment()
                 val mFragmentManager = parentFragmentManager
                 mFragmentManager.beginTransaction().apply {
                     replace(
                         R.id.frame_layout,
                         mLoginFragment,
-                        LoginFragment::class.java.simpleName
+                        SignInFragment::class.java.simpleName
                     )
                     commit()
                 }

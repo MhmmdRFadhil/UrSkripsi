@@ -14,7 +14,7 @@
     <!-- Login Text -->
     <string name="login_image_background">Login Image Background</string>
     <string name="masuk">Masuk</string>
-    <string name="username">Username</string>
+    <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="ingatkan_saya">Ingatkan saya</string>
     <string name="lupa_password">Lupa password?</string>
@@ -23,7 +23,6 @@
     <string name="tidak_memiliki_akun">Tidak memiliki akun?</string>
     <string name="daftar">Daftar</string>
     <string name="nama_lengkap">Nama lengkap</string>
-    <string name="email">Email</string>
 
     <!-- Bottom Navigation Text-->
     <string name="home">Home</string>
@@ -38,4 +37,5 @@
     <string name="developer">Pengembang</string>
     <string name="lorem_ipsum_dolor">Lorem ipsum dolor</string>
     <string name="logout">Keluar</string>
+    <string name="selamat_datang">Selamat Datang</string>
 </resources>

@@ -6,6 +6,8 @@ import android.view.View
 import androidx.appcompat.app.ActionBar
 
 object Utility {
+
+    // custom ActionBar to set Title Color
     fun ActionBar.setTitleColor(color: Int) {
         val text = SpannableString(title ?: "")
         text.setSpan(

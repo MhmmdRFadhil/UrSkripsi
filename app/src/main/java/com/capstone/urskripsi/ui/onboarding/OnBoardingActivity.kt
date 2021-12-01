@@ -5,7 +5,6 @@ import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityOnBoardingBinding
 import com.capstone.urskripsi.ui.login.LoginActivity
@@ -29,7 +28,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
         // go MainActivity if not first time run
         if (restorePrefData()) {
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, LoginActivity::class.java))
             finish()
         }
 

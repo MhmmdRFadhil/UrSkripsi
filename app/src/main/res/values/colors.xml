@@ -11,5 +11,5 @@
     <color name="buttonRippleColor">#33AAAAAA</color>
     <color name="textLogout">#ff3333</color>
     <color name="background_login">#F5F5F5</color>
-    <color name="grey_text">#9F9F9F</color>
+    <color name="grey_text">#757575</color>
 </resources>

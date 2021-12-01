@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityLoginBinding
-import com.capstone.urskripsi.ui.login.fragment.LoginFragment
+import com.capstone.urskripsi.ui.login.fragment.SignInFragment
 
 class LoginActivity : AppCompatActivity() {
 
@@ -21,14 +21,14 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setFragment() {
         val mFragmentManager = supportFragmentManager
-        val mLoginFragment = LoginFragment()
+        val mLoginFragment = SignInFragment()
         val fragment = mFragmentManager.findFragmentByTag(mLoginFragment::class.java.simpleName)
 
-        if (fragment !is LoginFragment) {
-            Log.d(TAG, FRAGMENT_NAME + LoginFragment::class.java.simpleName)
+        if (fragment !is SignInFragment) {
+            Log.d(TAG, FRAGMENT_NAME + SignInFragment::class.java.simpleName)
             mFragmentManager
                 .beginTransaction()
-                .add(R.id.frame_layout, mLoginFragment, LoginFragment::class.java.simpleName)
+                .add(R.id.frame_layout, mLoginFragment, SignInFragment::class.java.simpleName)
                 .commit()
         }
     }

@@ -55,11 +55,11 @@ class ProfileFragment : Fragment() {
         }
 
         binding?.rvAbout?.apply {
-            val profile: ArrayList<Profile> = ArrayList()
+            val about: ArrayList<Profile> = ArrayList()
             setHasFixedSize(true)
             layoutManager = LinearLayoutManager(context)
-            profile.add(Profile(R.drawable.ic_about, getString(R.string.developer)))
-            profileAdapter = ProfileAdapter(profile)
+            about.add(Profile(R.drawable.ic_about, getString(R.string.developer)))
+            profileAdapter = ProfileAdapter(about)
             adapter = profileAdapter
         }
     }
