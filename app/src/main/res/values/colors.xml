@@ -6,10 +6,9 @@
     <color name="secondaryDarkColor">#C68900</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="background">#F9F9F9</color>
+    <color name="background">#F6F5FA</color>
     <color name="unselectedTab">#E5E5E5</color>
     <color name="buttonRippleColor">#33AAAAAA</color>
     <color name="textLogout">#ff3333</color>
-    <color name="background_login">#F6F5FA</color>
     <color name="grey_text">#757575</color>
 </resources>

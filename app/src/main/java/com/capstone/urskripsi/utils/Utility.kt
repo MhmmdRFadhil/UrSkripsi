@@ -1,8 +1,10 @@
 package com.capstone.urskripsi.utils
 
+import android.content.Context
 import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 
 object Utility {
@@ -25,5 +27,9 @@ object Utility {
 
     fun View.hide() {
         this.visibility = View.GONE
+    }
+
+    fun showToast(message: String, context: Context) {
+        Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
 }

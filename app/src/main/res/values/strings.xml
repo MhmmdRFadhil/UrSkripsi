@@ -17,7 +17,7 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="ingatkan_saya">Ingatkan saya</string>
-    <string name="lupa_password">Lupa password?</string>
+    <string name="lupa_password">Lupa kata sandi?</string>
     <string name="atau_masuk_melalui">atau masuk melalui</string>
     <string name="google_icon">Google Icon</string>
     <string name="tidak_memiliki_akun">Tidak memiliki akun?</string>
@@ -40,5 +40,12 @@
     <string name="developer">Pengembang</string>
     <string name="lorem_ipsum_dolor">Lorem ipsum dolor</string>
     <string name="logout">Keluar</string>
+
+    <!--Forgot Password-->
+    <string name="info_forgot_password">Masukan email yang terkait dengan akun Anda dan kami akan mengirimkan email berisi instruksi untuk mengatur ulang kata sandi Anda</string>
+    <string name="title_forgot_password">Atur Ulang Kata Sandi</string>
+    <string name="forgot_password">Lupa Kata Sandi</string>
+    <string name="send_instruction">Kirim petunjuk</string>
+    <string name="empty_email">Mohon isikan email terlebih dahulu</string>
 
 </resources>
