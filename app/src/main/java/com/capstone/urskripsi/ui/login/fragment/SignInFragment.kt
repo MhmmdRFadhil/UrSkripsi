@@ -32,6 +32,19 @@ class SignInFragment : Fragment(), View.OnClickListener {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
 
+    private val resultLauncher: ActivityResultLauncher<Intent> =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val accountTask = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                try {
+                    val account = accountTask.getResult(ApiException::class.java)
+                    firebaseAuthWithGoogleAccount(account)
+                } catch (e: Exception) {
+                    showToast(e.message.toString(), requireContext())
+                }
+            }
+        }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -124,19 +137,6 @@ class SignInFragment : Fragment(), View.OnClickListener {
     }
 
     private fun signIn() {
-        val resultLauncher: ActivityResultLauncher<Intent> =
-            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-                if (result.resultCode == Activity.RESULT_OK) {
-                    val accountTask = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                    try {
-                        val account = accountTask.getResult(ApiException::class.java)
-                        firebaseAuthWithGoogleAccount(account)
-                    } catch (e: Exception) {
-                        showToast(e.message.toString(), requireContext())
-                    }
-                }
-            }
-
         val signInIntent = googleSignInClient.signInIntent
         resultLauncher.launch(signInIntent)
     }
