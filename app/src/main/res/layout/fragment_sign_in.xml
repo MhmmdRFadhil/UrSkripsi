@@ -8,31 +8,31 @@
 
     <TextView
         android:id="@+id/tv_masuk"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_semi_bold"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="@font/poppins_bold"
         android:text="@string/selamat_datang"
         android:textColor="@color/black"
-        android:textSize="28sp"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edt_username"
+        android:id="@+id/edt_email"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/custom_edittext_white"
+        android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/email"
         android:importantForAutofill="no"
-        android:inputType="text"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
+        android:inputType="textEmailAddress"
         android:textColorHint="@color/grey_text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -46,18 +46,16 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/custom_edittext_white"
+        android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/password"
         android:importantForAutofill="no"
         android:inputType="textPassword"
-        android:paddingStart="16dp"
-        android:paddingEnd="16dp"
         android:textColorHint="@color/grey_text"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_username" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_email" />
 
     <CheckBox
         android:id="@+id/cb_ingatkan_saya"
@@ -65,10 +63,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:fontFamily="@font/poppins_regular"
-        android:paddingStart="8dp"
-        android:paddingEnd="8dp"
         android:text="@string/ingatkan_saya"
-        android:textColor="@color/black"
         app:layout_constraintStart_toStartOf="@+id/edt_password"
         app:layout_constraintTop_toBottomOf="@+id/edt_password" />
 
@@ -76,9 +71,9 @@
         android:id="@+id/tv_lupa_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_medium"
+        android:fontFamily="@font/poppins_semi_bold"
         android:text="@string/lupa_password"
-        android:textColor="@color/primaryDarkColor"
+        android:textColor="@color/primaryColor"
         app:layout_constraintBottom_toBottomOf="@+id/cb_ingatkan_saya"
         app:layout_constraintEnd_toEndOf="@+id/edt_password"
         app:layout_constraintTop_toTopOf="@+id/cb_ingatkan_saya" />
@@ -89,12 +84,12 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:text="@string/masuk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cb_ingatkan_saya" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_lupa_password" />
 
     <TextView
         android:id="@+id/tv_other"

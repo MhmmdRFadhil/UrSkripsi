@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.login.fragment.SignUpFragment">
+    tools:context=".ui.login.LoginActivity">
 
     <TextView
         android:id="@+id/tv_daftar"
@@ -12,10 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/poppins_semi_bold"
-        android:text="@string/daftar"
+        android:fontFamily="@font/poppins_bold"
+        android:text="@string/buat_akun_baru"
         android:textColor="@color/black"
-        android:textSize="28sp"
+        android:textSize="26sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,7 +26,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/custom_edittext_white"
+        android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/nama_lengkap"
         android:importantForAutofill="no"
@@ -46,7 +46,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/custom_edittext_white"
+        android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/email"
         android:importantForAutofill="no"
@@ -66,7 +66,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        android:background="@drawable/custom_edittext_white"
+        android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"
         android:hint="@string/password"
         android:importantForAutofill="no"
@@ -85,11 +85,11 @@
         android:layout_width="0dp"
         android:layout_height="60dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="32dp"
         android:text="@string/daftar"
-        app:layout_constraintEnd_toEndOf="@+id/edt_password"
-        app:layout_constraintStart_toStartOf="@+id/edt_password"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_password" />
 
     <TextView
@@ -98,7 +98,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_regular"
-        android:text="@string/tidak_memiliki_akun"
+        android:text="@string/sudah_memiliki_akun"
         android:textColor="@color/grey_text"
         app:layout_constraintEnd_toEndOf="@+id/btn_daftar"
         app:layout_constraintEnd_toStartOf="@+id/tv_masuk"

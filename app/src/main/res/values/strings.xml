@@ -21,8 +21,11 @@
     <string name="atau_masuk_melalui">atau masuk melalui</string>
     <string name="google_icon">Google Icon</string>
     <string name="tidak_memiliki_akun">Tidak memiliki akun?</string>
+    <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
     <string name="daftar">Daftar</string>
     <string name="nama_lengkap">Nama lengkap</string>
+    <string name="selamat_datang">Selamat Datang 👋</string>
+    <string name="buat_akun_baru">Buat Akun Baru</string>
 
     <!-- Bottom Navigation Text-->
     <string name="home">Home</string>
@@ -37,5 +40,5 @@
     <string name="developer">Pengembang</string>
     <string name="lorem_ipsum_dolor">Lorem ipsum dolor</string>
     <string name="logout">Keluar</string>
-    <string name="selamat_datang">Selamat Datang</string>
+
 </resources>
