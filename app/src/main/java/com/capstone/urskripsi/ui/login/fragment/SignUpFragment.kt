@@ -44,7 +44,7 @@ class SignUpFragment : Fragment(), View.OnClickListener {
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
             binding?.edtEmail?.error = resources.getString(R.string.invalid_formail_email)
         } else if (TextUtils.isEmpty(namaLengkap)) {
-            binding?.edtNamaLengkap?.error = resources.getString(R.string.nama_lengkap)
+            binding?.edtNamaLengkap?.error = resources.getString(R.string.name_empty)
         } else if (TextUtils.isEmpty(email)) {
             binding?.edtEmail?.error = resources.getString(R.string.email_empty)
         } else if (TextUtils.isEmpty(password)) {

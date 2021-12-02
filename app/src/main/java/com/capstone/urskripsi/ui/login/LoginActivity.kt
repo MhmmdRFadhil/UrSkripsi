@@ -1,15 +1,19 @@
 package com.capstone.urskripsi.ui.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityLoginBinding
 import com.capstone.urskripsi.ui.login.fragment.SignInFragment
+import com.google.firebase.auth.FirebaseAuth
 
 class LoginActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityLoginBinding
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -17,6 +21,18 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setFragment()
+
+        mAuth = FirebaseAuth.getInstance()
+        checkUserIfAlreadyLogin()
+    }
+
+    private fun checkUserIfAlreadyLogin() {
+        val firebaseUser = mAuth.currentUser
+        if (firebaseUser != null) {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun setFragment() {

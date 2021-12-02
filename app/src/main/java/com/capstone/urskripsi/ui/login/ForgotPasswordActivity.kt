@@ -9,22 +9,26 @@ import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityForgotPasswordBinding
 import com.capstone.urskripsi.utils.Utility.setTitleColor
 import com.capstone.urskripsi.utils.Utility.showToast
+import com.google.firebase.auth.FirebaseAuth
 
 class ForgotPasswordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityForgotPasswordBinding
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityForgotPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        mAuth = FirebaseAuth.getInstance()
+
         supportActionBar?.apply {
             title = getString(R.string.forgot_password)
             setTitleColor(Color.BLACK)
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_arrow)
-            setBackgroundDrawable(ColorDrawable(Color.parseColor("#FFFFFF")))
+            setBackgroundDrawable(ColorDrawable(Color.parseColor(WHITE)))
         }
 
         binding.apply {
@@ -34,12 +38,24 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
                 if (email.isEmpty()) {
                     isEmptyField = true
+
                 }
 
                 if (isEmptyField) {
                     showToast(getString(R.string.empty_email), this@ForgotPasswordActivity)
+                } else {
+                    setForgotPassword()
                 }
             }
+        }
+    }
+
+    private fun setForgotPassword() {
+        val email = binding.edtEmail.text.toString().trim()
+
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener {
+
+            showToast(getString(R.string.reset_password), this@ForgotPasswordActivity)
         }
     }
 
@@ -48,5 +64,9 @@ class ForgotPasswordActivity : AppCompatActivity() {
             android.R.id.home -> onBackPressed()
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    companion object {
+        private const val WHITE = "#FFFFFF"
     }
 }

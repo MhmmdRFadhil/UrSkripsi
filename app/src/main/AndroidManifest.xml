@@ -26,7 +26,6 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:noHistory="true"
             android:theme="@style/Theme.UrSkripsi.Main" />
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
