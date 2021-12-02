@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "554716904559",
+    "project_id": "urskripsi",
+    "storage_bucket": "urskripsi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:554716904559:android:51c90472ceacbd0476219a",
+        "android_client_info": {
+          "package_name": "com.capstone.urskripsi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "554716904559-p56c3jhfih6bsto34fs1vni14se7egpt.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.urskripsi",
+            "certificate_hash": "15d8d6aac56556c692b848caf72be0dd4eba59c1"
+          }
+        },
+        {
+          "client_id": "554716904559-ruhn4ft37p5e8faqk76mbe53vln7rphl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWCVLEPCwTGTMQJwnxeK6IF04DrWFaJv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "554716904559-ruhn4ft37p5e8faqk76mbe53vln7rphl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

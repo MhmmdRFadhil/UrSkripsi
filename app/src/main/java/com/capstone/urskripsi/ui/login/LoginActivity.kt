@@ -1,8 +1,8 @@
 package com.capstone.urskripsi.ui.login
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityLoginBinding
 import com.capstone.urskripsi.ui.login.fragment.SignInFragment
@@ -33,6 +33,10 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
+    }
 
     companion object {
         const val TAG = "LoginFragment"

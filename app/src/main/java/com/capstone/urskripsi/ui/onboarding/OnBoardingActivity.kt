@@ -3,8 +3,8 @@ package com.capstone.urskripsi.ui.onboarding
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityOnBoardingBinding
 import com.capstone.urskripsi.ui.login.LoginActivity

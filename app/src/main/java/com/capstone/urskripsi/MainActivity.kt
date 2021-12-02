@@ -1,9 +1,12 @@
 package com.capstone.urskripsi
 
-import androidx.appcompat.app.AppCompatActivity
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.Navigation
 import com.capstone.urskripsi.databinding.ActivityMainBinding
+import com.capstone.urskripsi.ui.login.LoginActivity
+import com.google.firebase.auth.FirebaseAuth
 import github.com.st235.lib_expandablebottombar.navigation.ExpandableBottomBarNavigationUI
 
 class MainActivity : AppCompatActivity() {
@@ -16,5 +19,21 @@ class MainActivity : AppCompatActivity() {
         val navigationController = Navigation.findNavController(this, R.id.navigationHost)
 
         ExpandableBottomBarNavigationUI.setupWithNavController(binding.bottomNavigation, navigationController)
+
+        checkUserIfAlreadyLogin()
+    }
+
+    private fun checkUserIfAlreadyLogin() {
+        val firebaseUser = FirebaseAuth.getInstance().currentUser
+
+        if (firebaseUser == null) {
+            val intent = Intent(this@MainActivity, LoginActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        moveTaskToBack(true)
     }
 }

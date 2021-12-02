@@ -2,9 +2,9 @@ package com.capstone.urskripsi.ui.login
 
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityForgotPasswordBinding
 import com.capstone.urskripsi.utils.Utility.setTitleColor

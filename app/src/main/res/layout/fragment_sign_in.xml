@@ -144,4 +144,9 @@
         app:layout_constraintStart_toEndOf="@+id/tv_tidak_memiliki_akun"
         app:layout_constraintTop_toTopOf="@+id/tv_tidak_memiliki_akun" />
 
+    <include
+        android:id="@+id/progress_bar_dialog"
+        layout="@layout/custom_progress_bar"
+        android:visibility="gone" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

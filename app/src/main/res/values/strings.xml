@@ -26,6 +26,15 @@
     <string name="nama_lengkap">Nama lengkap</string>
     <string name="selamat_datang">Selamat Datang 👋</string>
     <string name="buat_akun_baru">Buat Akun Baru</string>
+    <string name="tunggu">Tunggu...</string>
+    <string name="invalid_formail_email">Format email salah</string>
+    <string name="email_empty">Masukan email</string>
+    <string name="password_empty">Masukan password</string>
+    <string name="name_empty">Masukan nama lengkap</string>
+    <string name="login_success">Login berhasil </string>
+    <string name="login_failed">Login tidak berhasil karena </string>
+    <string name="signup_success">Daftar berhasil</string>
+    <string name="signup_failed">Daftar tidak berhasil karena </string>
 
     <!-- Bottom Navigation Text-->
     <string name="home">Home</string>
@@ -40,6 +49,7 @@
     <string name="developer">Pengembang</string>
     <string name="lorem_ipsum_dolor">Lorem ipsum dolor</string>
     <string name="logout">Keluar</string>
+    <string name="logout_auth">Keluar dari akun</string>
 
     <!--Forgot Password-->
     <string name="info_forgot_password">Masukan email yang terkait dengan akun Anda dan kami akan mengirimkan email berisi instruksi untuk mengatur ulang kata sandi Anda</string>
@@ -47,5 +57,6 @@
     <string name="forgot_password">Lupa Kata Sandi</string>
     <string name="send_instruction">Kirim petunjuk</string>
     <string name="empty_email">Mohon isikan email terlebih dahulu</string>
+
 
 </resources>

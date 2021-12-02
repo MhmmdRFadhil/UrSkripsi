@@ -1,17 +1,22 @@
 package com.capstone.urskripsi.ui.login.fragment
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.fragment.app.Fragment
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentSignUpBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class SignUpFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentSignUpBinding? = null
     private val binding get() = _binding
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -24,28 +29,83 @@ class SignUpFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding?.tvMasuk?.setOnClickListener(this)
+        binding?.apply {
+            tvMasuk.setOnClickListener(this@SignUpFragment)
+            btnDaftar.setOnClickListener(this@SignUpFragment)
+        }
+        mAuth = FirebaseAuth.getInstance()
+    }
+
+    private fun validateFirebaseUser() {
+        val namaLengkap = binding?.edtNamaLengkap?.text.toString().trim()
+        val email = binding?.edtEmail?.text.toString().trim()
+        val password = binding?.edtPassword?.text.toString().trim()
+
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding?.edtEmail?.error = resources.getString(R.string.invalid_formail_email)
+        } else if (TextUtils.isEmpty(namaLengkap)) {
+            binding?.edtNamaLengkap?.error = resources.getString(R.string.nama_lengkap)
+        } else if (TextUtils.isEmpty(email)) {
+            binding?.edtEmail?.error = resources.getString(R.string.email_empty)
+        } else if (TextUtils.isEmpty(password)) {
+            binding?.edtPassword?.error = resources.getString(R.string.password_empty)
+        } else {
+            showProgressBarDialog(true)
+            mAuth.createUserWithEmailAndPassword(email, password)
+                .addOnSuccessListener {
+                    // if signup success
+                    showProgressBarDialog(false)
+
+                    changeFragmentToSignIn()
+                    Toast.makeText(
+                        requireContext(),
+                        resources.getString(R.string.signup_success),
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+                .addOnFailureListener { e ->
+                    // if signup failed
+                    showProgressBarDialog(false)
+
+                    Toast.makeText(
+                        requireContext(),
+                        resources.getString(R.string.signup_failed) + e.message,
+                        Toast.LENGTH_SHORT
+                    ).show()
+                }
+        }
+    }
+
+    private fun changeFragmentToSignIn() {
+        val mLoginFragment = SignInFragment()
+        val mFragmentManager = parentFragmentManager
+        mFragmentManager.beginTransaction().apply {
+            replace(
+                R.id.frame_layout,
+                mLoginFragment,
+                SignInFragment::class.java.simpleName
+            )
+            commit()
+        }
+    }
+
+    private fun showProgressBarDialog(state: Boolean) {
+        binding?.progressBarDialog?.progressBar?.visibility = if (state) View.VISIBLE else View.GONE
+        binding?.progressBarDialog?.tvTunggu?.visibility = if (state) View.VISIBLE else View.GONE
+    }
+
+    override fun onClick(view: View?) {
+        if (view != null) {
+            when (view.id) {
+                binding?.tvMasuk?.id -> changeFragmentToSignIn()
+
+                binding?.btnDaftar?.id -> validateFirebaseUser()
+            }
+        }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    override fun onClick(view: View?) {
-        if (view != null) {
-            if (view.id == binding?.tvMasuk?.id) {
-                val mLoginFragment = SignInFragment()
-                val mFragmentManager = parentFragmentManager
-                mFragmentManager.beginTransaction().apply {
-                    replace(
-                        R.id.frame_layout,
-                        mLoginFragment,
-                        SignInFragment::class.java.simpleName
-                    )
-                    commit()
-                }
-            }
-        }
     }
 }
