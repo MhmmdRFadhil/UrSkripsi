@@ -58,4 +58,8 @@
         <item name="android:focusable">true</item>
         <item name="android:clickable">true</item>
     </style>
+
+    <style name="BackgroundProgress">
+        <item name="android:windowBackground">@color/background_progress</item>
+    </style>
 </resources>

@@ -30,7 +30,7 @@ class LeaderBoardFragment : Fragment() {
             (activity as MainActivity).supportActionBar?.apply {
                 title = getString(R.string.leaderboard)
                 setTitleColor(Color.BLACK)
-                setBackgroundDrawable(ColorDrawable(Color.parseColor("#FFFFFF")))
+                setBackgroundDrawable(ColorDrawable(Color.parseColor(WHITE)))
             }
         }
     }
@@ -38,5 +38,9 @@ class LeaderBoardFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    companion object {
+        private const val WHITE = "#FFFFFF"
     }
 }

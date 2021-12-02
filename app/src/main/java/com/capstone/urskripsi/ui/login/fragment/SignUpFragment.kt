@@ -6,10 +6,10 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentSignUpBinding
+import com.capstone.urskripsi.utils.Utility.showToast
 import com.google.firebase.auth.FirebaseAuth
 
 class SignUpFragment : Fragment(), View.OnClickListener {
@@ -41,7 +41,7 @@ class SignUpFragment : Fragment(), View.OnClickListener {
         val email = binding?.edtEmail?.text.toString().trim()
         val password = binding?.edtPassword?.text.toString().trim()
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.isNotEmpty()) {
             binding?.edtEmail?.error = resources.getString(R.string.invalid_formail_email)
         } else if (TextUtils.isEmpty(namaLengkap)) {
             binding?.edtNamaLengkap?.error = resources.getString(R.string.name_empty)
@@ -57,21 +57,16 @@ class SignUpFragment : Fragment(), View.OnClickListener {
                     showProgressBarDialog(false)
 
                     changeFragmentToSignIn()
-                    Toast.makeText(
-                        requireContext(),
-                        resources.getString(R.string.signup_success),
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    showToast(resources.getString(R.string.signup_success), requireContext())
                 }
                 .addOnFailureListener { e ->
                     // if signup failed
                     showProgressBarDialog(false)
 
-                    Toast.makeText(
-                        requireContext(),
-                        resources.getString(R.string.signup_failed) + e.message,
-                        Toast.LENGTH_SHORT
-                    ).show()
+                    showToast(
+                        resources.getString(R.string.signup_failed, e.message),
+                        requireContext()
+                    )
                 }
         }
     }

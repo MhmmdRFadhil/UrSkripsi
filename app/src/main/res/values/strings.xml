@@ -32,9 +32,9 @@
     <string name="password_empty">Masukan password</string>
     <string name="name_empty">Masukan nama lengkap</string>
     <string name="login_success">Login berhasil </string>
-    <string name="login_failed">Login tidak berhasil karena </string>
+    <string name="login_failed">Login tidak berhasil karena %1$s</string>
     <string name="signup_success">Daftar berhasil</string>
-    <string name="signup_failed">Daftar tidak berhasil karena </string>
+    <string name="signup_failed">Daftar tidak berhasil karena %1$s</string>
 
     <!-- Bottom Navigation Text-->
     <string name="home">Home</string>
@@ -59,5 +59,10 @@
     <string name="empty_email">Mohon isikan email terlebih dahulu</string>
     <string name="reset_password">Email sudah dikirimkan</string>
 
-
+    <!--Change Password-->
+    <string name="old_password">Kata sandi lama</string>
+    <string name="new_password">Kata sandi baru</string>
+    <string name="change">Ubah</string>
+    <string name="change_password_success">Kata sandi berhasil diubah</string>
+    <string name="change_password_failed">\"Kata sandi gagal diubah karena %1$s"</string>
 </resources>
