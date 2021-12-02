@@ -35,6 +35,8 @@
     <string name="login_failed">Login tidak berhasil karena %1$s</string>
     <string name="signup_success">Daftar berhasil</string>
     <string name="signup_failed">Daftar tidak berhasil karena %1$s</string>
+    <string name="google_new">Akun google dibuat</string>
+    <string name="google_exist">LoggedIn</string>
 
     <!-- Bottom Navigation Text-->
     <string name="home">Home</string>

@@ -1,5 +1,6 @@
 package com.capstone.urskripsi.ui.login.fragment
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
@@ -7,6 +8,8 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.capstone.urskripsi.MainActivity
@@ -14,13 +17,20 @@ import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentSignInBinding
 import com.capstone.urskripsi.ui.login.ForgotPasswordActivity
 import com.capstone.urskripsi.utils.Utility.showToast
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.GoogleAuthProvider
 
 class SignInFragment : Fragment(), View.OnClickListener {
 
     private var _binding: FragmentSignInBinding? = null
     private val binding get() = _binding
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,10 +47,12 @@ class SignInFragment : Fragment(), View.OnClickListener {
             tvDaftar.setOnClickListener(this@SignInFragment)
             tvLupaPassword.setOnClickListener(this@SignInFragment)
             btnMasuk.setOnClickListener(this@SignInFragment)
+            btnGoogle.setOnClickListener(this@SignInFragment)
         }
 
         mAuth = FirebaseAuth.getInstance()
         checkUserIfAlreadyLogin()
+        validateUserGoogleClient()
     }
 
     private fun checkUserIfAlreadyLogin() {
@@ -80,6 +92,55 @@ class SignInFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    private fun validateUserGoogleClient() {
+        val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+        googleSignInClient = GoogleSignIn.getClient(requireContext(), googleSignInOptions)
+
+    }
+
+    private fun firebaseAuthWithGoogleAccount(accountClient: GoogleSignInAccount?) {
+        val credential = GoogleAuthProvider.getCredential(accountClient?.idToken, null)
+        mAuth.signInWithCredential(credential)
+            .addOnSuccessListener {
+                // if success
+                // check if user is new or existing
+                if (it.additionalUserInfo!!.isNewUser) {
+                    showToast(resources.getString(R.string.google_new), requireContext())
+                } else {
+                    showToast(resources.getString(R.string.google_exist), requireContext())
+                }
+
+                val intent = Intent(requireContext(), MainActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
+            }
+            .addOnFailureListener { e ->
+                // if failed
+                showToast(e.message.toString(), requireContext())
+            }
+    }
+
+    private fun signIn() {
+        val resultLauncher: ActivityResultLauncher<Intent> =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == Activity.RESULT_OK) {
+                    val accountTask = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                    try {
+                        val account = accountTask.getResult(ApiException::class.java)
+                        firebaseAuthWithGoogleAccount(account)
+                    } catch (e: Exception) {
+                        showToast(e.message.toString(), requireContext())
+                    }
+                }
+            }
+
+        val signInIntent = googleSignInClient.signInIntent
+        resultLauncher.launch(signInIntent)
+    }
+
     override fun onClick(view: View?) {
         if (view != null) {
             when (view.id) {
@@ -107,6 +168,8 @@ class SignInFragment : Fragment(), View.OnClickListener {
                 }
 
                 R.id.btn_masuk -> validateFirebaseUser()
+
+                R.id.btn_google -> signIn()
             }
         }
     }
