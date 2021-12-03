@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "554716904559-fgaahpbrrji98p4mkqgok0flk4573hc6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.urskripsi",
+            "certificate_hash": "081022f0a17f4df9d9bc0ff9826cb02be72edb25"
+          }
+        },
+        {
           "client_id": "554716904559-p56c3jhfih6bsto34fs1vni14se7egpt.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
@@ -35,7 +43,7 @@
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "554716904559-ruhn4ft37p5e8faqk76mbe53vln7rphl.apps.googleusercontent.com",
+              "client_id": "554716904559-b68e3bbqnt91ssc9pt1htigl7tgs46pq.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

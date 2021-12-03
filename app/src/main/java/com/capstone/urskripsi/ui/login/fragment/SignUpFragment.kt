@@ -84,11 +84,6 @@ class SignUpFragment : Fragment(), View.OnClickListener {
         }
     }
 
-    private fun showProgressBarDialog(state: Boolean) {
-        binding?.progressBarDialog?.progressBar?.visibility = if (state) View.VISIBLE else View.GONE
-        binding?.progressBarDialog?.tvTunggu?.visibility = if (state) View.VISIBLE else View.GONE
-    }
-
     override fun onClick(view: View?) {
         if (view != null) {
             when (view.id) {
@@ -97,6 +92,11 @@ class SignUpFragment : Fragment(), View.OnClickListener {
                 binding?.btnDaftar?.id -> validateFirebaseUser()
             }
         }
+    }
+
+    private fun showProgressBarDialog(state: Boolean) {
+        binding?.progressBarDialog?.progressBar?.visibility = if (state) View.VISIBLE else View.GONE
+        binding?.progressBarDialog?.tvTunggu?.visibility = if (state) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {

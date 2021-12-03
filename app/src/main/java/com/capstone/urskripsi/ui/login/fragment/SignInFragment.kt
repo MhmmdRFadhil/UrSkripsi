@@ -16,6 +16,7 @@ import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentSignInBinding
 import com.capstone.urskripsi.ui.login.ForgotPasswordActivity
+import com.capstone.urskripsi.utils.Utility.getStringFromName
 import com.capstone.urskripsi.utils.Utility.showToast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -71,8 +72,7 @@ class SignInFragment : Fragment(), View.OnClickListener {
     private fun checkUserIfAlreadyLogin() {
         val firebaseUser = mAuth.currentUser
         if (firebaseUser != null) {
-            val intent = Intent(requireContext(), MainActivity::class.java)
-            startActivity(intent)
+            signInSuccess()
         }
     }
 
@@ -92,9 +92,7 @@ class SignInFragment : Fragment(), View.OnClickListener {
                 .addOnSuccessListener {
                     // if success
                     showProgressBarDialog(false)
-                    val intent = Intent(requireContext(), MainActivity::class.java)
-                    startActivity(intent)
-
+                    signInSuccess()
                     showToast(resources.getString(R.string.login_success), requireContext())
                 }
                 .addOnFailureListener { e ->
@@ -106,8 +104,9 @@ class SignInFragment : Fragment(), View.OnClickListener {
     }
 
     private fun validateUserGoogleClient() {
+        val defaultWebClientId = requireContext().getStringFromName("default_web_client_id")
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestIdToken(defaultWebClientId)
             .requestEmail()
             .build()
         googleSignInClient = GoogleSignIn.getClient(requireContext(), googleSignInOptions)
@@ -120,25 +119,18 @@ class SignInFragment : Fragment(), View.OnClickListener {
             .addOnSuccessListener {
                 // if success
                 // check if user is new or existing
-                if (it.additionalUserInfo!!.isNewUser) {
+                if (it.additionalUserInfo?.isNewUser as Boolean) {
                     showToast(resources.getString(R.string.google_new), requireContext())
                 } else {
                     showToast(resources.getString(R.string.google_exist), requireContext())
                 }
 
-                val intent = Intent(requireContext(), MainActivity::class.java)
-                startActivity(intent)
-                activity?.finish()
+                signInSuccess()
             }
             .addOnFailureListener { e ->
                 // if failed
                 showToast(e.message.toString(), requireContext())
             }
-    }
-
-    private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        resultLauncher.launch(signInIntent)
     }
 
     override fun onClick(view: View?) {
@@ -172,6 +164,17 @@ class SignInFragment : Fragment(), View.OnClickListener {
                 R.id.btn_google -> signIn()
             }
         }
+    }
+
+    private fun signInSuccess() {
+        val intent = Intent(requireContext(), MainActivity::class.java)
+        startActivity(intent)
+        activity?.finish()
+    }
+
+    private fun signIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        resultLauncher.launch(signInIntent)
     }
 
     private fun showProgressBarDialog(state: Boolean) {

@@ -32,4 +32,8 @@ object Utility {
     fun showToast(message: String, context: Context) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
     }
+
+    fun Context.getStringFromName(name: String): String {
+        return getString(resources.getIdentifier(name, "string", packageName))
+    }
 }
