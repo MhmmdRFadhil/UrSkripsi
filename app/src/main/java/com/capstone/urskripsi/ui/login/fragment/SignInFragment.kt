@@ -15,7 +15,9 @@ import androidx.fragment.app.FragmentManager
 import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentSignInBinding
+import com.capstone.urskripsi.helper.PreferencesHelper
 import com.capstone.urskripsi.ui.login.ForgotPasswordActivity
+import com.capstone.urskripsi.utils.Constant
 import com.capstone.urskripsi.utils.Utility.getStringFromName
 import com.capstone.urskripsi.utils.Utility.showToast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -32,6 +34,7 @@ class SignInFragment : Fragment(), View.OnClickListener {
     private val binding get() = _binding
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
+    private lateinit var sharedPreferences: PreferencesHelper
 
     private val resultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -64,9 +67,12 @@ class SignInFragment : Fragment(), View.OnClickListener {
             btnGoogle.setOnClickListener(this@SignInFragment)
         }
 
+        sharedPreferences = PreferencesHelper(requireContext())
+
         mAuth = FirebaseAuth.getInstance()
         checkUserIfAlreadyLogin()
         validateUserGoogleClient()
+        getDataUser()
     }
 
     private fun checkUserIfAlreadyLogin() {
@@ -76,35 +82,49 @@ class SignInFragment : Fragment(), View.OnClickListener {
         }
     }
 
+    // login with Email
     private fun validateFirebaseUser() {
-        val email = binding?.edtEmail?.text.toString().trim()
-        val password = binding?.edtPassword?.text.toString().trim()
+        binding?.apply {
+            val email = edtEmail.text.toString().trim()
+            val password = edtPassword.text.toString().trim()
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.isNotEmpty()) {
-            binding?.edtEmail?.error = resources.getString(R.string.invalid_formail_email)
-        } else if (TextUtils.isEmpty(email)) {
-            binding?.edtEmail?.error = resources.getString(R.string.email_empty)
-        } else if (TextUtils.isEmpty(password)) {
-            binding?.edtPassword?.error = resources.getString(R.string.password_empty)
-        } else {
-            showProgressBarDialog(true)
-            mAuth.signInWithEmailAndPassword(email, password)
-                .addOnSuccessListener {
-                    // if success
-                    showProgressBarDialog(false)
-                    signInSuccess()
-                    showToast(resources.getString(R.string.login_success), requireContext())
+            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.isNotEmpty()) {
+                edtEmail.error = resources.getString(R.string.invalid_formail_email)
+            } else if (TextUtils.isEmpty(email)) {
+                edtEmail.error = resources.getString(R.string.email_empty)
+            } else if (TextUtils.isEmpty(password)) {
+                edtPassword.error = resources.getString(R.string.password_empty)
+            } else {
+                showProgressBarDialog(true)
+                mAuth.signInWithEmailAndPassword(email, password)
+                    .addOnSuccessListener {
+                        // if success
+                        showProgressBarDialog(false)
+                        signInSuccess()
+                        showToast(resources.getString(R.string.login_success), requireContext())
+                    }
+                    .addOnFailureListener { e ->
+                        // if failed
+                        showProgressBarDialog(false)
+                        showToast(
+                            resources.getString(R.string.login_failed, e.message),
+                            requireContext()
+                        )
+                    }
+
+                if (email.isNotEmpty() && password.isNotEmpty() && cbIngatkanSaya.isChecked) {
+                    setDataUser(email, password)
+                } else {
+                    sharedPreferences.clearData()
                 }
-                .addOnFailureListener { e ->
-                    // if failed
-                    showProgressBarDialog(false)
-                    showToast(resources.getString(R.string.login_failed, e.message), requireContext())
-                }
+            }
         }
     }
+    // End
 
+    // Login with Google
     private fun validateUserGoogleClient() {
-        val defaultWebClientId = requireContext().getStringFromName("default_web_client_id")
+        val defaultWebClientId = requireContext().getStringFromName(getString(R.string.web_client_id))
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(defaultWebClientId)
             .requestEmail()
@@ -132,6 +152,29 @@ class SignInFragment : Fragment(), View.OnClickListener {
                 showToast(e.message.toString(), requireContext())
             }
     }
+    // End
+
+    // shared preference to save data login
+    private fun setDataUser(email: String, password: String) {
+        sharedPreferences.setDataString(Constant.PREF_EMAIL, email)
+        sharedPreferences.setDataString(Constant.PREF_PASSWORD, password)
+        sharedPreferences.setDataBoolean(Constant.PREF_IS_CHECKED, true)
+    }
+
+    private fun getDataUser() {
+        binding?.apply {
+            val email = sharedPreferences.getDataString(Constant.PREF_EMAIL)
+            val password = sharedPreferences.getDataString(Constant.PREF_PASSWORD)
+            val isChecked = sharedPreferences.getDataBoolean(Constant.PREF_IS_CHECKED)
+
+            if (isChecked) {
+                edtEmail.setText(email)
+                edtPassword.setText(password)
+                cbIngatkanSaya.isChecked = true
+            }
+        }
+    }
+    // End
 
     override fun onClick(view: View?) {
         if (view != null) {

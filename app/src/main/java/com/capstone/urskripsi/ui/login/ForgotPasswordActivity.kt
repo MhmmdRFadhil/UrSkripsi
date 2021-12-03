@@ -1,5 +1,6 @@
 package com.capstone.urskripsi.ui.login
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -38,14 +39,17 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
                 if (email.isEmpty()) {
                     isEmptyField = true
-
+                    edtEmail.error = getString(R.string.email_empty)
                 }
 
-                if (isEmptyField) {
-                    showToast(getString(R.string.empty_email), this@ForgotPasswordActivity)
-                } else {
+                if (!isEmptyField) {
                     setForgotPassword()
                 }
+            }
+
+            tvBackToLogin.setOnClickListener {
+                startActivity(Intent(this@ForgotPasswordActivity, LoginActivity::class.java))
+                finish()
             }
         }
     }

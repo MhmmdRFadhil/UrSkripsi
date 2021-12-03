@@ -4,6 +4,7 @@ import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityChangePasswordBinding
 import com.capstone.urskripsi.utils.Utility.setTitleColor
@@ -39,20 +40,14 @@ class ChangePasswordActivity : AppCompatActivity() {
     private fun changePassword() {
         binding.apply {
             btnChangePassword.setOnClickListener {
-                var isEmptyField = false
-
                 val oldPassword = edtOldPassword.text.toString().trim()
                 val newPassword = edtNewPassword.text.toString().trim()
 
                 if (oldPassword.isEmpty()) {
-                    isEmptyField = true
-                }
-
-                if (newPassword.isEmpty()) {
-                    isEmptyField = true
-                }
-
-                if (!isEmptyField) {
+                    edtOldPassword.error = getString(R.string.password_empty)
+                } else if (newPassword.isEmpty()) {
+                    edtNewPassword.error = getString(R.string.password_empty)
+                } else {
                     val user = mAuth.currentUser
                     val userEmail = user?.email
 
@@ -80,6 +75,13 @@ class ChangePasswordActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> onBackPressed()
+        }
+        return super.onOptionsItemSelected(item)
     }
 
     companion object {
