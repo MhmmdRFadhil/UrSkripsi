@@ -1,13 +1,11 @@
 package com.capstone.urskripsi.ui.content.profile.account
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityChangeProfileBinding
-import com.capstone.urskripsi.utils.Utility.setTitleColor
+import com.capstone.urskripsi.utils.Utility.simpleToolbar
 
 class ChangeProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChangeProfileBinding
@@ -16,13 +14,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         binding = ActivityChangeProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        supportActionBar?.apply {
-            title = getString(R.string.change_profile)
-            setTitleColor(Color.BLACK)
-            setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_arrow)
-            setBackgroundDrawable(ColorDrawable(Color.parseColor(WHITE)))
-        }
+        simpleToolbar(getString(R.string.change_profile), binding.toolbar.root, true)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -33,9 +25,5 @@ class ChangeProfileActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
-    }
-
-    companion object {
-        private const val WHITE = "#FFFFFF"
     }
 }

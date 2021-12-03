@@ -1,15 +1,13 @@
 package com.capstone.urskripsi.ui.login
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityForgotPasswordBinding
-import com.capstone.urskripsi.utils.Utility.setTitleColor
 import com.capstone.urskripsi.utils.Utility.showToast
+import com.capstone.urskripsi.utils.Utility.simpleToolbar
 import com.google.firebase.auth.FirebaseAuth
 
 class ForgotPasswordActivity : AppCompatActivity() {
@@ -24,13 +22,7 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
 
-        supportActionBar?.apply {
-            title = getString(R.string.forgot_password)
-            setTitleColor(Color.BLACK)
-            setDisplayHomeAsUpEnabled(true)
-            setHomeAsUpIndicator(R.drawable.ic_arrow)
-            setBackgroundDrawable(ColorDrawable(Color.parseColor(WHITE)))
-        }
+        simpleToolbar(getString(R.string.forgot_password), binding.toolbar.root, true)
 
         binding.apply {
             btnForgotPassword.setOnClickListener {
@@ -68,9 +60,5 @@ class ForgotPasswordActivity : AppCompatActivity() {
             android.R.id.home -> onBackPressed()
         }
         return super.onOptionsItemSelected(item)
-    }
-
-    companion object {
-        private const val WHITE = "#FFFFFF"
     }
 }

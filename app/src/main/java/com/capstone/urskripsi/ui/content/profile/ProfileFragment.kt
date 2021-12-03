@@ -1,8 +1,6 @@
 package com.capstone.urskripsi.ui.content.profile
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -16,8 +14,8 @@ import com.capstone.urskripsi.ui.content.profile.account.ChangePasswordActivity
 import com.capstone.urskripsi.ui.content.profile.account.ChangeProfileActivity
 import com.capstone.urskripsi.ui.login.LoginActivity
 import com.capstone.urskripsi.utils.DividerItemDecorator
-import com.capstone.urskripsi.utils.Utility.setTitleColor
 import com.capstone.urskripsi.utils.Utility.showToast
+import com.capstone.urskripsi.utils.Utility.simpleToolbar
 import com.google.firebase.auth.FirebaseAuth
 
 class ProfileFragment : Fragment() {
@@ -38,11 +36,7 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
-            (activity as MainActivity).supportActionBar?.apply {
-                title = getString(R.string.profile)
-                setTitleColor(Color.BLACK)
-                setBackgroundDrawable(ColorDrawable(Color.parseColor(WHITE)))
-            }
+            (activity as MainActivity).simpleToolbar(getString(R.string.profile), binding?.toolbar?.root, false)
         }
 
         mAuth = FirebaseAuth.getInstance()
@@ -103,9 +97,5 @@ class ProfileFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-    }
-
-    companion object {
-        private const val WHITE = "#FFFFFF"
     }
 }

@@ -1,24 +1,20 @@
 package com.capstone.urskripsi.utils
 
 import android.content.Context
-import android.text.SpannableString
-import android.text.style.ForegroundColorSpan
 import android.view.View
 import android.widget.Toast
-import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 
 object Utility {
 
     // custom ActionBar to set Title Color
-    fun ActionBar.setTitleColor(color: Int) {
-        val text = SpannableString(title ?: "")
-        text.setSpan(
-            ForegroundColorSpan(color),
-            0,
-            text.length,
-            SpannableString.SPAN_INCLUSIVE_INCLUSIVE
-        )
-        title = text
+    fun AppCompatActivity.simpleToolbar(toolbarTitle: String, toolbar: Toolbar?, navigationIcon: Boolean) {
+        setSupportActionBar(toolbar)
+        supportActionBar?.apply {
+            title = toolbarTitle
+            setDisplayHomeAsUpEnabled(navigationIcon)
+        }
     }
 
     fun View.show() {

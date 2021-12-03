@@ -1,7 +1,5 @@
 package com.capstone.urskripsi.ui.content.home
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -10,7 +8,7 @@ import androidx.fragment.app.Fragment
 import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
-import com.capstone.urskripsi.utils.Utility.setTitleColor
+import com.capstone.urskripsi.utils.Utility.simpleToolbar
 
 class HomeFragment : Fragment() {
 
@@ -26,20 +24,12 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
-            (activity as MainActivity).supportActionBar?.apply {
-                title = getString(R.string.home)
-                setTitleColor(Color.BLACK)
-                setBackgroundDrawable(ColorDrawable(Color.parseColor(WHITE)))
-            }
+            (activity as MainActivity).simpleToolbar(getString(R.string.home), binding?.toolbar?.root, false)
         }
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
-    }
-
-    companion object {
-        private const val WHITE = "#FFFFFF"
     }
 }

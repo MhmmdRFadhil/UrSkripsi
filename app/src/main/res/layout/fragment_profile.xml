@@ -6,14 +6,22 @@
     android:layout_height="match_parent"
     tools:context=".ui.content.profile.ProfileFragment">
 
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <View
         android:id="@+id/viewProfile"
         android:layout_width="match_parent"
         android:layout_height="100dp"
+        android:layout_marginTop="8dp"
         android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/toolbar" />
 
     <ImageView
         android:id="@+id/imgProfile"
@@ -23,7 +31,7 @@
         android:src="@drawable/avatar"
         app:layout_constraintBottom_toBottomOf="@+id/viewProfile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/viewProfile"
         tools:ignore="ContentDescription" />
 
     <TextView
