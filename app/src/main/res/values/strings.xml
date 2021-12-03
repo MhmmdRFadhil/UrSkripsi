@@ -58,7 +58,6 @@
     <string name="title_forgot_password">Atur Ulang Kata Sandi</string>
     <string name="forgot_password">Lupa Kata Sandi</string>
     <string name="send_instruction">Kirim petunjuk</string>
-    <string name="empty_email">Mohon isikan email terlebih dahulu</string>
     <string name="reset_password">Email sudah dikirimkan</string>
     <string name="kembali_ke_halaman_login">Kembali ke halaman login</string>
 
