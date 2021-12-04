@@ -114,7 +114,12 @@ class ChangeProfileActivity : AppCompatActivity() {
             })
 
             toolbar.btnSave.setOnClickListener {
-                showToast(getString(R.string.save_success), this@ChangeProfileActivity)
+                if (edtFullName.text.toString().trim().isNotEmpty() || edtEmail.text.toString()
+                        .trim().isNotEmpty() || edtUniversityName.text.toString().trim()
+                        .isNotEmpty() || edtStudyProgram.text.toString().trim().isNotEmpty()
+                ) {
+                    showToast(getString(R.string.save_success), this@ChangeProfileActivity)
+                }
             }
         }
     }

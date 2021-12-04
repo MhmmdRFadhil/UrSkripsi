@@ -124,7 +124,8 @@ class SignInFragment : Fragment(), View.OnClickListener {
 
     // Login with Google
     private fun validateUserGoogleClient() {
-        val defaultWebClientId = requireContext().getStringFromName(getString(R.string.web_client_id))
+        val defaultWebClientId =
+            requireContext().getStringFromName(getString(R.string.web_client_id))
         val googleSignInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(defaultWebClientId)
             .requestEmail()
