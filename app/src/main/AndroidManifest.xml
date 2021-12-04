@@ -22,20 +22,17 @@
             android:exported="false" />
         <activity
             android:name=".ui.login.LoginActivity"
-            android:exported="false"
-            android:theme="@style/Theme.UrSkripsi.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".ui.onboarding.OnBoardingActivity"
-            android:exported="false"
-            android:theme="@style/Theme.UrSkripsi.NoActionBar" />
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false"
-            android:theme="@style/Theme.UrSkripsi.Main" />
+            android:theme="@style/Theme.UrSkripsi.CustomWindowBackground" />
         <activity
             android:name=".ui.splashscreen.SplashScreenActivity"
-            android:exported="true"
-            android:theme="@style/Theme.UrSkripsi.NoActionBar">
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -12,4 +12,5 @@
     <color name="textLogout">#ff3333</color>
     <color name="grey_text">#757575</color>
     <color name="background_progress">#CCFFFFFF</color>
+    <color name="button_disable">#AAAAAA</color>
 </resources>

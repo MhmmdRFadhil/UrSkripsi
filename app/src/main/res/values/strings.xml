@@ -71,4 +71,13 @@
     <!--Web Client ID-->
     <string name="web_client_id">default_web_client_id</string>
 
+    <!--Custom Toolbar-->
+    <string name="simpan">Simpan</string>
+
+    <!--Change Profile-->
+    <string name="ubah_foto">Ubah foto</string>
+    <string name="nama_universitas">Nama universitas</string>
+    <string name="program_studi">Program studi</string>
+    <string name="save_success">Data berhasil disimpan</string>
+
 </resources>
