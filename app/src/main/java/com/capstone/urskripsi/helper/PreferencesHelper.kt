@@ -16,13 +16,9 @@ class PreferencesHelper(context: Context) {
         editor.putString(key, value).apply()
     }
 
-    fun getDataBoolean(key: String): Boolean {
-        return sharedPreferences.getBoolean(key, false)
-    }
+    fun getDataBoolean(key: String): Boolean = sharedPreferences.getBoolean(key, false)
 
-    fun getDataString(key: String): String? {
-        return sharedPreferences.getString(key, null)
-    }
+    fun getDataString(key: String): String? = sharedPreferences.getString(key, null)
 
     fun clearData() {
         editor.clear().apply()

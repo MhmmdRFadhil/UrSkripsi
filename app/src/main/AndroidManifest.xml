@@ -3,6 +3,8 @@
     package="com.capstone.urskripsi">
     <!-- Internet permission -->
     <uses-permission android:name="android.permission.INTERNET" />
+    <!--Storage permission-->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"

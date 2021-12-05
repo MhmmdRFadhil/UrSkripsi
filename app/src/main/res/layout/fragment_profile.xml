@@ -28,26 +28,41 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:src="@drawable/avatar"
         app:layout_constraintBottom_toBottomOf="@+id/viewProfile"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewProfile"
-        tools:ignore="ContentDescription" />
+        tools:ignore="ContentDescription"
+        tools:src="@drawable/avatar" />
 
     <TextView
-        android:id="@+id/tvNameProfile"
+        android:id="@+id/tvProfileName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/poppins_semi_bold"
-        android:text="@string/lorem_ipsum_dolor"
+        android:maxLines="1"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgProfile"
+        app:layout_constraintTop_toTopOf="@+id/imgProfile"
+        tools:text="@string/lorem_ipsum_dolor" />
+
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:fontFamily="@font/poppins_regular"
+        android:maxLines="1"
+        android:textColor="@color/black"
+        android:textSize="15sp"
         app:layout_constraintBottom_toBottomOf="@+id/imgProfile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/imgProfile"
-        app:layout_constraintTop_toTopOf="@+id/imgProfile" />
+        tools:text="@string/lorem_ipsum_dolor" />
 
     <View
         android:id="@+id/viewAccount"

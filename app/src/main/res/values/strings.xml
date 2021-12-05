@@ -79,5 +79,7 @@
     <string name="nama_universitas">Nama universitas</string>
     <string name="program_studi">Program studi</string>
     <string name="save_success">Data berhasil disimpan</string>
+    <string name="nama">Nama</string>
+    <string name="upload_photo_success">Photo berhasil diganti</string>
 
 </resources>

@@ -14,11 +14,15 @@ import com.capstone.urskripsi.ui.content.profile.account.ChangePasswordActivity
 import com.capstone.urskripsi.ui.content.profile.account.ChangeProfileActivity
 import com.capstone.urskripsi.ui.login.LoginActivity
 import com.capstone.urskripsi.utils.DividerItemDecorator
+import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_PHOTO
+import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_USERNAME
+import com.capstone.urskripsi.utils.Utility.loadImageUrl
 import com.capstone.urskripsi.utils.Utility.showToast
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class ProfileFragment : Fragment() {
 
@@ -26,6 +30,7 @@ class ProfileFragment : Fragment() {
     private lateinit var accountAdapter: ProfileAdapter
     private lateinit var aboutAdapter: ProfileAdapter
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var databaseReference: DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,6 +54,7 @@ class ProfileFragment : Fragment() {
 
         signingOut()
         showRecyclerView()
+        retrieveData()
     }
 
     private fun showRecyclerView() {
@@ -90,13 +96,36 @@ class ProfileFragment : Fragment() {
         }
     }
 
+    private fun retrieveData() {
+        val emailUser = mAuth.currentUser?.email
+        val setEmail = emailUser?.replace('.', ',')
+        databaseReference =
+            FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val username = snapshot.child(FIREBASE_USERNAME).value
+                    val photo = snapshot.child(FIREBASE_PHOTO).value
+                    binding?.apply {
+                        tvProfileName.text = username.toString()
+                        imgProfile.loadImageUrl(photo.toString())
+                        tvEmail.text = emailUser
+                    }
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+    }
+
     private fun signingOut() {
 
         binding?.viewLogout?.setOnClickListener {
             mAuth.currentUser?.getIdToken(false)?.addOnSuccessListener { result ->
                 when (result.signInProvider) {
-                    "google.com" -> signOutGoogle()
-                    "password" -> signOutEmail()
+                    GOOGLE -> signOutGoogle()
+                    PASSWORD -> signOutEmail()
                 }
             }
 
@@ -123,5 +152,10 @@ class ProfileFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    companion object {
+        const val GOOGLE = "google.com"
+        const val PASSWORD = "password"
     }
 }

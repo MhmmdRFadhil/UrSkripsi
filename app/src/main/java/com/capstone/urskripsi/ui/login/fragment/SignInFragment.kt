@@ -16,6 +16,7 @@ import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentSignInBinding
 import com.capstone.urskripsi.helper.PreferencesHelper
+import com.capstone.urskripsi.model.UserDataLogin
 import com.capstone.urskripsi.ui.login.ForgotPasswordActivity
 import com.capstone.urskripsi.utils.Constant
 import com.capstone.urskripsi.utils.Utility.getStringFromName
@@ -27,6 +28,8 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.GoogleAuthProvider
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class SignInFragment : Fragment(), View.OnClickListener {
 
@@ -35,6 +38,7 @@ class SignInFragment : Fragment(), View.OnClickListener {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var googleSignInClient: GoogleSignInClient
     private lateinit var sharedPreferences: PreferencesHelper
+    private lateinit var databaseReference: DatabaseReference
 
     private val resultLauncher: ActivityResultLauncher<Intent> =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -140,7 +144,9 @@ class SignInFragment : Fragment(), View.OnClickListener {
             .addOnSuccessListener {
                 // if success
                 // check if user is new or existing
+                val email = mAuth.currentUser?.email
                 if (it.additionalUserInfo?.isNewUser as Boolean) {
+                    saveDataUserLogin(email.toString())
                     showToast(resources.getString(R.string.google_new), requireContext())
                 } else {
                     showToast(resources.getString(R.string.google_exist), requireContext())
@@ -154,6 +160,20 @@ class SignInFragment : Fragment(), View.OnClickListener {
             }
     }
     // End
+
+    private fun saveDataUserLogin(email: String) {
+        val firebaseUser = mAuth.currentUser
+        val setEmail = email.replace('.', ',')
+        val getPhoto = firebaseUser?.photoUrl?.toString()
+        val getUsername = firebaseUser?.displayName.toString()
+        val resizePhoto = getPhoto?.replace("s96-c", "s400-c").toString()
+
+        databaseReference = FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
+        val userDataLogin = UserDataLogin(email, getUsername, resizePhoto)
+
+        databaseReference.setValue(userDataLogin)
+
+    }
 
     // shared preference to save data login
     private fun setDataUser(email: String, password: String) {

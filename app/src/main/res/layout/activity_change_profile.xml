@@ -48,7 +48,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvChangeProfile" />
 
     <EditText
-        android:id="@+id/edt_full_name"
+        android:id="@+id/edt_name"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -56,7 +56,7 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"
-        android:hint="@string/nama_lengkap"
+        android:hint="@string/nama"
         android:importantForAutofill="no"
         android:inputType="text"
         android:textColorHint="@color/grey_text"
@@ -70,7 +70,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"
@@ -81,7 +81,7 @@
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edt_full_name" />
+        app:layout_constraintTop_toBottomOf="@+id/edt_name" />
 
 
     <EditText
@@ -89,7 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"
@@ -107,7 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"

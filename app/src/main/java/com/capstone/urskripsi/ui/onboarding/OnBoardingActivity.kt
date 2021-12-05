@@ -32,7 +32,7 @@ class OnBoardingActivity : AppCompatActivity() {
             finish()
         }
 
-        // setup data onboarding
+        // setup data on boarding
         val onBoardingData: ArrayList<OnBoarding> = ArrayList()
         onBoardingData.apply {
             add(

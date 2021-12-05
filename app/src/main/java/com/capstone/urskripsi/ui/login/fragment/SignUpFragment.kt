@@ -37,13 +37,13 @@ class SignUpFragment : Fragment(), View.OnClickListener {
     }
 
     private fun validateFirebaseUser() {
-        val namaLengkap = binding?.edtNamaLengkap?.text.toString().trim()
+        val fullName = binding?.edtNamaLengkap?.text.toString().trim()
         val email = binding?.edtEmail?.text.toString().trim()
         val password = binding?.edtPassword?.text.toString().trim()
 
         if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.isNotEmpty()) {
             binding?.edtEmail?.error = resources.getString(R.string.invalid_formail_email)
-        } else if (TextUtils.isEmpty(namaLengkap)) {
+        } else if (TextUtils.isEmpty(fullName)) {
             binding?.edtNamaLengkap?.error = resources.getString(R.string.name_empty)
         } else if (TextUtils.isEmpty(email)) {
             binding?.edtEmail?.error = resources.getString(R.string.email_empty)
