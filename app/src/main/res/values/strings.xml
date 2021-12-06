@@ -59,7 +59,8 @@
     <string name="title_forgot_password">Lupa \nKata Sandi?</string>
     <string name="forgot_password">Lupa Kata Sandi</string>
     <string name="send_instruction">Kirim petunjuk</string>
-    <string name="reset_password">Email sudah dikirimkan</string>
+    <string name="email_send_success">Email sudah dikirimkan</string>
+    <string name="email_send_failed">Email gagal dikirimkan</string>
     <string name="kembali_ke_halaman_login">Kembali ke halaman login</string>
 
     <!--Change Password-->

@@ -2,10 +2,14 @@ package com.capstone.urskripsi.ui.login
 
 import android.content.Intent
 import android.os.Bundle
+import android.text.TextUtils
+import android.util.Patterns
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityForgotPasswordBinding
+import com.capstone.urskripsi.utils.Utility.hide
+import com.capstone.urskripsi.utils.Utility.show
 import com.capstone.urskripsi.utils.Utility.showToast
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
 import com.google.firebase.auth.FirebaseAuth
@@ -27,14 +31,12 @@ class ForgotPasswordActivity : AppCompatActivity() {
         binding.apply {
             btnForgotPassword.setOnClickListener {
                 val email = edtEmail.text.toString().trim()
-                var isEmptyField = false
 
-                if (email.isEmpty()) {
-                    isEmptyField = true
-                    edtEmail.error = getString(R.string.email_empty)
-                }
-
-                if (!isEmptyField) {
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches() && email.isNotEmpty()) {
+                    edtEmail.error = resources.getString(R.string.invalid_formail_email)
+                } else if (TextUtils.isEmpty(email)) {
+                    edtEmail.error = resources.getString(R.string.email_empty)
+                } else {
                     setForgotPassword()
                 }
             }
@@ -48,10 +50,13 @@ class ForgotPasswordActivity : AppCompatActivity() {
 
     private fun setForgotPassword() {
         val email = binding.edtEmail.text.toString().trim()
-
-        mAuth.sendPasswordResetEmail(email).addOnCompleteListener {
-
-            showToast(getString(R.string.reset_password), this@ForgotPasswordActivity)
+        binding.progressBarDialog.root.show()
+        mAuth.sendPasswordResetEmail(email).addOnSuccessListener {
+            binding.progressBarDialog.root.hide()
+            showToast(getString(R.string.email_send_success), this@ForgotPasswordActivity)
+        }.addOnFailureListener {
+            binding.progressBarDialog.root.hide()
+            showToast(getString(R.string.email_send_failed), this@ForgotPasswordActivity)
         }
     }
 

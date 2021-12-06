@@ -142,10 +142,12 @@ class SignInFragment : Fragment(), View.OnClickListener {
 
     private fun firebaseAuthWithGoogleAccount(accountClient: GoogleSignInAccount?) {
         val credential = GoogleAuthProvider.getCredential(accountClient?.idToken, null)
+        binding?.progressBarDialog?.root?.show()
         mAuth.signInWithCredential(credential)
             .addOnSuccessListener {
                 // if success
                 // check if user is new or existing
+                binding?.progressBarDialog?.root?.hide()
                 val email = mAuth.currentUser?.email
                 if (it.additionalUserInfo?.isNewUser as Boolean) {
                     saveDataUserLogin(email.toString())
@@ -158,6 +160,7 @@ class SignInFragment : Fragment(), View.OnClickListener {
             }
             .addOnFailureListener { e ->
                 // if failed
+                binding?.progressBarDialog?.root?.hide()
                 showToast(e.message.toString(), requireContext())
             }
     }

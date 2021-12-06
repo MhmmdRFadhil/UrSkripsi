@@ -66,9 +66,15 @@ class SignUpFragment : Fragment(), View.OnClickListener {
                         if (it.additionalUserInfo?.isNewUser as Boolean) {
                             saveDataUserLogin(emailUser.toString(), name)
                             changeFragmentToSignIn()
-                            showToast(resources.getString(R.string.signup_success), requireContext())
+                            showToast(
+                                resources.getString(R.string.signup_success),
+                                requireContext()
+                            )
                         } else {
-                            showToast(resources.getString(R.string.signup_success), requireContext())
+                            showToast(
+                                resources.getString(R.string.signup_success),
+                                requireContext()
+                            )
                         }
                     }
                     .addOnFailureListener { e ->
