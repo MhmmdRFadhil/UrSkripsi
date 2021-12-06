@@ -83,4 +83,14 @@
     <string name="program_studi">Program studi</string>
     <string name="save_success">Data berhasil disimpan</string>
     <string name="save_failed">Data gagal disimpan</string>
+
+    <!-- Home Fragment Text -->
+    <string name="hello">Hello,</string>
+    <string name="yuk_lanjutkan_progress_skripsinya">Yuk! lanjutkan progress skripsinya!</string>
+    <string name="progress_skripsimu">Progress skripsimu</string>
+    <string name="_0">0</string>
+    <string name="percent">%</string>
+    <string name="task_belum_dibuat">Task belum dibuat</string>
+    <string name="add_button">Add Button</string>
+
 </resources>

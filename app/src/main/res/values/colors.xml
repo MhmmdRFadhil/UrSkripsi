@@ -13,4 +13,5 @@
     <color name="grey_text">#757575</color>
     <color name="background_progress">#CCFFFFFF</color>
     <color name="button_disable">#AAAAAA</color>
+    <color name="progress_color">#C4C4C4</color>
 </resources>

@@ -21,20 +21,20 @@
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/on_boarding_indicator_unselected.xml" value="0.23055555555555557" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/onboarding_indicator_selected.xml" value="0.23055555555555557" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/onboarding_indicator_unselected.xml" value="0.23055555555555557" />
-        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_change_password.xml" value="0.264" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_change_password.xml" value="0.2" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_change_profile.xml" value="0.264" />
-        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_forgot_password.xml" value="0.2" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_on_boarding.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_splash_screen.xml" value="0.234375" />
-        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/custom_progress_bar.xml" value="0.2" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/custom_progress_bar.xml" value="0.234375" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_home.xml" value="0.22083333333333333" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_leader_board.xml" value="0.22083333333333333" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_login.xml" value="0.4" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_sign_in.xml" value="0.264" />
-        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_sign_up.xml" value="0.2" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/indicator_view_pager.xml" value="0.234375" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_content_on_boarding.xml" value="0.2" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_content_onboarding.xml" value="0.4" />
@@ -45,6 +45,12 @@
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/toolbar.xml" value="0.18425925925925926" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/toolbar_with_button.xml" value="0.4" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/menu/item_bottom_navigation.xml" value="0.19907407407407407" />
+        <entry key="..\:/Programming/AndroidStudioProjects/UrSkripsi/app/src/main/res/drawable/bg_blue_button.xml" value="0.3703125" />
+        <entry key="..\:/Programming/AndroidStudioProjects/UrSkripsi/app/src/main/res/drawable/bg_login.xml" value="0.3703125" />
+        <entry key="..\:/Programming/AndroidStudioProjects/UrSkripsi/app/src/main/res/layout/bg_task_not_created.xml" value="0.3541666666666667" />
+        <entry key="..\:/Programming/AndroidStudioProjects/UrSkripsi/app/src/main/res/layout/custom_progress_bar.xml" value="0.25317028985507245" />
+        <entry key="..\:/Programming/AndroidStudioProjects/UrSkripsi/app/src/main/res/layout/fragment_home.xml" value="0.3541666666666667" />
+        <entry key="..\:/Programming/AndroidStudioProjects/UrSkripsi/app/src/main/res/layout/fragment_sign_in.xml" value="0.25317028985507245" />
       </map>
     </option>
   </component>

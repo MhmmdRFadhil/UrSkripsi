@@ -10,9 +10,10 @@ import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), View.OnClickListener {
 
     private var binding: FragmentHomeBinding? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -24,7 +25,24 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (activity != null) {
-            (activity as MainActivity).simpleToolbar(getString(R.string.home), binding?.toolbar?.root, false)
+            (activity as MainActivity).simpleToolbar(
+                getString(R.string.home),
+                binding?.toolbar?.root,
+                false
+            )
+
+            binding?.apply {
+                btnAdd.setOnClickListener(this@HomeFragment)
+            }
+        }
+    }
+
+
+    override fun onClick(view: View?) {
+        if (view != null) {
+            when (view.id) {
+                binding?.btnAdd?.id -> {}
+            }
         }
     }
 
