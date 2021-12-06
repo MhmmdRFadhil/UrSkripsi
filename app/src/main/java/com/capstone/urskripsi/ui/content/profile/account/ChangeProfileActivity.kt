@@ -1,13 +1,11 @@
 package com.capstone.urskripsi.ui.content.profile.account
 
-import android.content.ContentResolver
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.MenuItem
-import android.webkit.MimeTypeMap
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.capstone.urskripsi.R
@@ -17,15 +15,20 @@ import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_PHOTO
 import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_STUDY_PROGRAM
 import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_UNIVERSITY_NAME
 import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_USERNAME
+import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.loadImageURI
 import com.capstone.urskripsi.utils.Utility.loadImageUrl
 import com.capstone.urskripsi.utils.Utility.setStateColor
+import com.capstone.urskripsi.utils.Utility.show
 import com.capstone.urskripsi.utils.Utility.showToast
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.HashMap
 
 class ChangeProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityChangeProfileBinding
@@ -62,32 +65,33 @@ class ChangeProfileActivity : AppCompatActivity() {
         }
 
     // Upload Photo to Firebase
-    private fun uploadPhoto(uri: Uri) {
+    private fun uploadPhoto(uri: Uri?) {
         val emailUser = mAuth.currentUser?.email
         val setEmail = emailUser?.replace('.', ',')
-        storageReference = FirebaseStorage.getInstance().getReference("User/$setEmail/Data")
+        storageReference = FirebaseStorage.getInstance().getReference("User/$setEmail/Photo")
 
-        val fileRef: StorageReference = storageReference.child(
-            System.currentTimeMillis().toString() + "." + getFileExtension(uri)
-        )
+        val formatter = SimpleDateFormat("yyyy_MM_dd_HH_mm_ss", Locale.getDefault())
+        val date = Date()
+        val filename = formatter.format(date)
+        val fileRef: StorageReference = storageReference.child(filename)
 
-        fileRef.putFile(uri).addOnSuccessListener {
-            fileRef.downloadUrl.addOnSuccessListener {
-                val map = HashMap<String, Any>()
-                map[FIREBASE_PHOTO] = it.toString()
-                databaseReference.updateChildren(map)
-                showToast(getString(R.string.upload_photo_success), this@ChangeProfileActivity)
+        if (uri != null) {
+            fileRef.putFile(uri).addOnSuccessListener {
+                fileRef.downloadUrl.addOnSuccessListener {
+                    val map = HashMap<String, Any>()
+                    map[FIREBASE_PHOTO] = it.toString()
+                    databaseReference.updateChildren(map)
+                    binding.progressBar.root.hide()
+                    showToast(getString(R.string.save_success), this@ChangeProfileActivity)
+                }
+            }.addOnProgressListener {
+                binding.progressBar.root.show()
+            }.addOnFailureListener {
+                binding.progressBar.root.hide()
+                showToast(getString(R.string.save_failed), this@ChangeProfileActivity)
             }
         }
     }
-
-    // Set Format File Photo
-    private fun getFileExtension(uri: Uri): String? {
-        val cr: ContentResolver = contentResolver
-        val mime: MimeTypeMap = MimeTypeMap.getSingleton()
-        return mime.getExtensionFromMimeType(cr.getType(uri))
-    }
-    // End
 
     // Retrieve Data from Firebase
     private fun retrieveData() {
@@ -114,7 +118,7 @@ class ChangeProfileActivity : AppCompatActivity() {
                             name.toString(),
                             email.toString(),
                             universityName.toString(),
-                            studyProgram.toString()
+                            studyProgram.toString(),
                         )
                     }
                 }
@@ -131,128 +135,102 @@ class ChangeProfileActivity : AppCompatActivity() {
         name: String?,
         email: String?,
         universityName: String?,
-        studyProgram: String?
+        studyProgram: String?,
     ) {
         binding.apply {
-            edtName.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+            val edt = listOf(edtName, edtEmail, edtUniversityName, edtStudyProgram)
 
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    if (p0.toString().isNotEmpty() && p0.toString() != name) {
-                        toolbar.btnSave.setStateColor(
-                            this@ChangeProfileActivity,
-                            R.color.primaryColor,
-                            true
-                        )
-                    } else {
-                        toolbar.btnSave.setStateColor(
-                            this@ChangeProfileActivity,
-                            R.color.button_disable,
-                            false
-                        )
+            for (editText in edt) {
+
+                editText.addTextChangedListener(object : TextWatcher {
+                    override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
+
+                    override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
+                        val editTextName = edtName.text.toString().trim()
+                        val editTextEmail = edtEmail.text.toString().trim()
+                        val editTextUniversityName = edtUniversityName.text.toString().trim()
+                        val editTextStudyProgram = edtStudyProgram.text.toString().trim()
+
+                        if ((editTextName.isNotEmpty() && editTextName != name) ||
+                            (editTextEmail.isNotEmpty() && editTextEmail != email) ||
+                            (editTextUniversityName.isNotEmpty() && editTextUniversityName != universityName) ||
+                            (editTextStudyProgram.isNotEmpty() && editTextStudyProgram != studyProgram)
+                        ) {
+                            toolbar.btnSave.setStateColor(
+                                this@ChangeProfileActivity,
+                                R.color.primaryColor,
+                                true
+                            )
+                        } else {
+                            toolbar.btnSave.setStateColor(
+                                this@ChangeProfileActivity,
+                                R.color.button_disable,
+                                false
+                            )
+                        }
                     }
-                }
 
-                override fun afterTextChanged(p0: Editable?) {}
-            })
-
-            edtEmail.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    if (p0.toString().isNotEmpty() && p0.toString() != email) {
-                        toolbar.btnSave.setStateColor(
-                            this@ChangeProfileActivity,
-                            R.color.primaryColor,
-                            true
-                        )
-                    } else {
-                        toolbar.btnSave.setStateColor(
-                            this@ChangeProfileActivity,
-                            R.color.button_disable,
-                            false
-                        )
-                    }
-                }
-
-                override fun afterTextChanged(p0: Editable?) {}
-            })
-
-            edtUniversityName.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    if (p0.toString().isNotEmpty() && p0.toString() != universityName) {
-                        toolbar.btnSave.setStateColor(
-                            this@ChangeProfileActivity,
-                            R.color.primaryColor,
-                            true
-                        )
-                    } else {
-                        toolbar.btnSave.setStateColor(
-                            this@ChangeProfileActivity,
-                            R.color.button_disable,
-                            false
-                        )
-                    }
-                }
-
-                override fun afterTextChanged(p0: Editable?) {}
-            })
-
-            edtStudyProgram.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
-
-                override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
-                    if (p0.toString().isNotEmpty() && p0.toString() != studyProgram) {
-                        toolbar.btnSave.setStateColor(
-                            this@ChangeProfileActivity,
-                            R.color.primaryColor,
-                            true
-                        )
-                    } else {
-                        toolbar.btnSave.setStateColor(
-                            this@ChangeProfileActivity,
-                            R.color.button_disable,
-                            false
-                        )
-                    }
-                }
-
-                override fun afterTextChanged(p0: Editable?) {}
-            })
+                    override fun afterTextChanged(p0: Editable?) {}
+                })
+            }
         }
-        saveDataUser()
+        saveDataUser(name, email, universityName, studyProgram)
+        binding.toolbar.btnSave.setStateColor(this, R.color.button_disable, false)
     }
     // End
 
     // Save Data User to Firebase
-    private fun saveDataUser() {
+    private fun saveDataUser(
+        name: String?,
+        email: String?,
+        universityName: String?,
+        studyProgram: String?
+    ) {
         binding.apply {
             toolbar.btnSave.setOnClickListener {
-                val map = HashMap<String, Any>()
-                imgUri?.let { uri ->
-                    uploadPhoto(uri)
-                }
 
-                if (edtName.text.toString().trim().isNotEmpty()) {
-                    map[FIREBASE_USERNAME] = edtName.text.toString().trim()
-                }
+                val txtName = edtName.text.toString().trim()
+                val txtEmail = edtEmail.text.toString().trim()
+                val txtUniversityName = edtUniversityName.text.toString().trim()
+                val txtStudyProgram = edtStudyProgram.text.toString().trim()
 
-                if (edtEmail.text.toString().trim().isNotEmpty()) {
-                    map[FIREBASE_EMAIL] = edtEmail.text.toString().trim()
-                }
+                if (imgUri != null) {
+                    if ((txtName != name) ||
+                        (txtEmail != email) ||
+                        (txtUniversityName != universityName) ||
+                        (txtStudyProgram != studyProgram)
+                    ) {
+                        val map = HashMap<String, Any>()
+                        map[FIREBASE_USERNAME] = txtName
+                        map[FIREBASE_EMAIL] = txtEmail
+                        map[FIREBASE_UNIVERSITY_NAME] = txtUniversityName
+                        map[FIREBASE_STUDY_PROGRAM] = txtStudyProgram
 
-                if (edtUniversityName.text.toString().trim().isNotEmpty()) {
-                    map[FIREBASE_UNIVERSITY_NAME] =
-                        edtUniversityName.text.toString().trim()
-                }
+                        databaseReference.updateChildren(map)
+                        uploadPhoto(imgUri)
+                        imgUri = null
+                    } else {
+                        uploadPhoto(imgUri)
+                        imgUri = null
+                    }
+                } else {
+                    val map = HashMap<String, Any>()
+                    map[FIREBASE_USERNAME] = txtName
+                    map[FIREBASE_EMAIL] = txtEmail
+                    map[FIREBASE_UNIVERSITY_NAME] = txtUniversityName
+                    map[FIREBASE_STUDY_PROGRAM] = txtStudyProgram
 
-                if (edtStudyProgram.text.toString().trim().isNotEmpty()) {
-                    map[FIREBASE_STUDY_PROGRAM] = edtStudyProgram.text.toString().trim()
+                    binding.progressBar.root.show()
+
+                    databaseReference.updateChildren(map).addOnSuccessListener {
+                        binding.progressBar.root.hide()
+                        imgUri != null
+                        showToast(getString(R.string.save_success), this@ChangeProfileActivity)
+                    }.addOnFailureListener {
+                        binding.progressBar.root.hide()
+                        showToast(getString(R.string.save_failed), this@ChangeProfileActivity)
+                    }
                 }
-                databaseReference.updateChildren(map)
-                showToast(getString(R.string.save_success), this@ChangeProfileActivity)
             }
         }
     }

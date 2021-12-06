@@ -46,7 +46,7 @@
     <!--Profile Text-->
     <string name="account">Akun</string>
     <string name="change_profile">Ubah profil</string>
-    <string name="change_password">Ubah kata sandi</string>
+    <string name="change_password">Ubah Kata Sandi</string>
     <string name="about">Tentang</string>
     <string name="developer">Pengembang</string>
     <string name="lorem_ipsum_dolor">Lorem ipsum dolor</string>
@@ -54,8 +54,8 @@
     <string name="logout_auth">Keluar dari akun</string>
 
     <!--Forgot Password-->
-    <string name="info_forgot_password">Masukan email yang terkait dengan akun Anda dan kami akan mengirimkan email berisi instruksi untuk mengatur ulang kata sandi Anda</string>
-    <string name="title_forgot_password">Atur Ulang Kata Sandi</string>
+    <string name="info_forgot_password">Jangan khawatir itu terjadi. Silakan masukkan alamat yang terkait dengan akun Anda</string>
+    <string name="title_forgot_password">Lupa \nKata Sandi?</string>
     <string name="forgot_password">Lupa Kata Sandi</string>
     <string name="send_instruction">Kirim petunjuk</string>
     <string name="reset_password">Email sudah dikirimkan</string>
@@ -65,6 +65,7 @@
     <string name="old_password">Kata sandi lama</string>
     <string name="new_password">Kata sandi baru</string>
     <string name="change">Ubah</string>
+    <string name="title_change_password">Ubah \nKata Sandi</string>
     <string name="change_password_success">Kata sandi berhasil diubah</string>
     <string name="change_password_failed">Kata sandi gagal diubah karena %1$s</string>
 
@@ -79,7 +80,6 @@
     <string name="nama_universitas">Nama universitas</string>
     <string name="program_studi">Program studi</string>
     <string name="save_success">Data berhasil disimpan</string>
+    <string name="save_failed">Data gagal disimpan</string>
     <string name="nama">Nama</string>
-    <string name="upload_photo_success">Photo berhasil diganti</string>
-
 </resources>
