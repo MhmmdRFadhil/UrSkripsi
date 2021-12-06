@@ -14,7 +14,7 @@ import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_EMAIL
 import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_PHOTO
 import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_STUDY_PROGRAM
 import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_UNIVERSITY_NAME
-import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_USERNAME
+import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.loadImageURI
 import com.capstone.urskripsi.utils.Utility.loadImageUrl
@@ -102,18 +102,24 @@ class ChangeProfileActivity : AppCompatActivity() {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val photo = snapshot.child(FIREBASE_PHOTO).value
-                    val name = snapshot.child(FIREBASE_USERNAME).value
+                    val name = snapshot.child(FIREBASE_NAME).value
                     val email = snapshot.child(FIREBASE_EMAIL).value
                     val universityName = snapshot.child(FIREBASE_UNIVERSITY_NAME).value
                     val studyProgram = snapshot.child(FIREBASE_STUDY_PROGRAM).value
                     binding.apply {
-                        imgProfile.loadImageUrl(photo.toString())
-                        edtName.setText(name.toString())
                         edtEmail.setText(email.toString())
+                        edtName.setText(name.toString())
                         if (universityName != null && studyProgram != null) {
                             edtUniversityName.setText(universityName.toString())
                             edtStudyProgram.setText(studyProgram.toString())
                         }
+
+                        if (photo != null) {
+                            imgProfile.loadImageUrl(photo.toString())
+                        } else {
+                            imgProfile.setImageResource(R.drawable.avatar)
+                        }
+
                         checkInput(
                             name.toString(),
                             email.toString(),
@@ -201,7 +207,7 @@ class ChangeProfileActivity : AppCompatActivity() {
                         (txtStudyProgram != studyProgram)
                     ) {
                         val map = HashMap<String, Any>()
-                        map[FIREBASE_USERNAME] = txtName
+                        map[FIREBASE_NAME] = txtName
                         map[FIREBASE_EMAIL] = txtEmail
                         map[FIREBASE_UNIVERSITY_NAME] = txtUniversityName
                         map[FIREBASE_STUDY_PROGRAM] = txtStudyProgram
@@ -215,7 +221,7 @@ class ChangeProfileActivity : AppCompatActivity() {
                     }
                 } else {
                     val map = HashMap<String, Any>()
-                    map[FIREBASE_USERNAME] = txtName
+                    map[FIREBASE_NAME] = txtName
                     map[FIREBASE_EMAIL] = txtEmail
                     map[FIREBASE_UNIVERSITY_NAME] = txtUniversityName
                     map[FIREBASE_STUDY_PROGRAM] = txtStudyProgram

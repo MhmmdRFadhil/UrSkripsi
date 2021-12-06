@@ -20,7 +20,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/edt_nama_lengkap"
+        android:id="@+id/edt_nama"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginStart="24dp"
@@ -28,7 +28,7 @@
         android:layout_marginEnd="24dp"
         android:background="@drawable/custom_edittext"
         android:fontFamily="@font/poppins_regular"
-        android:hint="@string/nama_lengkap"
+        android:hint="@string/nama"
         android:importantForAutofill="no"
         android:inputType="text"
         android:paddingStart="16dp"
@@ -55,9 +55,9 @@
         android:paddingEnd="16dp"
         android:textColorHint="@color/grey_text"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/edt_nama_lengkap"
-        app:layout_constraintStart_toStartOf="@+id/edt_nama_lengkap"
-        app:layout_constraintTop_toBottomOf="@+id/edt_nama_lengkap" />
+        app:layout_constraintEnd_toEndOf="@+id/edt_nama"
+        app:layout_constraintStart_toStartOf="@+id/edt_nama"
+        app:layout_constraintTop_toBottomOf="@+id/edt_nama" />
 
     <EditText
         android:id="@+id/edt_password"
@@ -124,6 +124,10 @@
     <include
         android:id="@+id/progress_bar_dialog"
         layout="@layout/custom_progress_bar"
-        android:visibility="gone" />
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

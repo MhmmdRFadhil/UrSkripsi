@@ -22,7 +22,7 @@
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/onboarding_indicator_selected.xml" value="0.23055555555555557" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/onboarding_indicator_unselected.xml" value="0.23055555555555557" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_change_password.xml" value="0.264" />
-        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_change_profile.xml" value="0.35724533715925394" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_change_profile.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_main.xml" value="0.264" />
@@ -34,7 +34,7 @@
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_login.xml" value="0.4" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_sign_in.xml" value="0.264" />
-        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_sign_up.xml" value="0.2" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/indicator_view_pager.xml" value="0.234375" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_content_on_boarding.xml" value="0.2" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_content_onboarding.xml" value="0.4" />

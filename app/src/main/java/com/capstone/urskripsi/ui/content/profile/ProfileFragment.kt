@@ -15,7 +15,7 @@ import com.capstone.urskripsi.ui.content.profile.account.ChangeProfileActivity
 import com.capstone.urskripsi.ui.login.LoginActivity
 import com.capstone.urskripsi.utils.DividerItemDecorator
 import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_PHOTO
-import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_USERNAME
+import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Utility.loadImageUrl
 import com.capstone.urskripsi.utils.Utility.showToast
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
@@ -104,11 +104,17 @@ class ProfileFragment : Fragment() {
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val username = snapshot.child(FIREBASE_USERNAME).value
+                    val name = snapshot.child(FIREBASE_NAME).value
                     val photo = snapshot.child(FIREBASE_PHOTO).value
                     binding?.apply {
-                        tvProfileName.text = username.toString()
-                        imgProfile.loadImageUrl(photo.toString())
+
+                        if (photo != null) {
+                            imgProfile.loadImageUrl(photo.toString())
+                        } else {
+                            imgProfile.setImageResource(R.drawable.avatar)
+                        }
+
+                        tvProfileName.text = name.toString()
                         tvEmail.text = emailUser
                     }
                 }

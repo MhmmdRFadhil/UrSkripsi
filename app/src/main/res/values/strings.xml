@@ -23,7 +23,7 @@
     <string name="tidak_memiliki_akun">Tidak memiliki akun?</string>
     <string name="sudah_memiliki_akun">Sudah memiliki akun?</string>
     <string name="daftar">Daftar</string>
-    <string name="nama_lengkap">Nama lengkap</string>
+    <string name="nama">Nama</string>
     <string name="selamat_datang">Selamat Datang 👋</string>
     <string name="buat_akun_baru">Buat Akun Baru</string>
     <string name="tunggu">Tunggu &#8230;</string>
@@ -50,6 +50,7 @@
     <string name="about">Tentang</string>
     <string name="developer">Pengembang</string>
     <string name="lorem_ipsum_dolor">Lorem ipsum dolor</string>
+    <string name="nama_belum_diatur">Nama belum diatur</string>
     <string name="logout">Keluar</string>
     <string name="logout_auth">Keluar dari akun</string>
 
@@ -81,5 +82,4 @@
     <string name="program_studi">Program studi</string>
     <string name="save_success">Data berhasil disimpan</string>
     <string name="save_failed">Data gagal disimpan</string>
-    <string name="nama">Nama</string>
 </resources>

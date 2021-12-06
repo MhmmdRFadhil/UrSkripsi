@@ -20,6 +20,8 @@ import com.capstone.urskripsi.model.UserDataLogin
 import com.capstone.urskripsi.ui.login.ForgotPasswordActivity
 import com.capstone.urskripsi.utils.Constant
 import com.capstone.urskripsi.utils.Utility.getStringFromName
+import com.capstone.urskripsi.utils.Utility.hide
+import com.capstone.urskripsi.utils.Utility.show
 import com.capstone.urskripsi.utils.Utility.showToast
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
@@ -99,17 +101,17 @@ class SignInFragment : Fragment(), View.OnClickListener {
             } else if (TextUtils.isEmpty(password)) {
                 edtPassword.error = resources.getString(R.string.password_empty)
             } else {
-                showProgressBarDialog(true)
+                progressBarDialog.root.show()
                 mAuth.signInWithEmailAndPassword(email, password)
                     .addOnSuccessListener {
                         // if success
-                        showProgressBarDialog(false)
-                        signInSuccess()
+                        progressBarDialog.root.hide()
                         showToast(resources.getString(R.string.login_success), requireContext())
+                        signInSuccess()
                     }
                     .addOnFailureListener { e ->
                         // if failed
-                        showProgressBarDialog(false)
+                        progressBarDialog.root.hide()
                         showToast(
                             resources.getString(R.string.login_failed, e.message),
                             requireContext()
@@ -165,14 +167,12 @@ class SignInFragment : Fragment(), View.OnClickListener {
         val firebaseUser = mAuth.currentUser
         val setEmail = email.replace('.', ',')
         val getPhoto = firebaseUser?.photoUrl?.toString()
-        val getUsername = firebaseUser?.displayName.toString()
+        val getName = firebaseUser?.displayName.toString()
         val resizePhoto = getPhoto?.replace("s96-c", "s400-c").toString()
 
         databaseReference = FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
-        val userDataLogin = UserDataLogin(email, getUsername, resizePhoto)
-
+        val userDataLogin = UserDataLogin(email, getName, resizePhoto)
         databaseReference.setValue(userDataLogin)
-
     }
 
     // shared preference to save data login
@@ -239,11 +239,6 @@ class SignInFragment : Fragment(), View.OnClickListener {
     private fun signIn() {
         val signInIntent = googleSignInClient.signInIntent
         resultLauncher.launch(signInIntent)
-    }
-
-    private fun showProgressBarDialog(state: Boolean) {
-        binding?.progressBarDialog?.progressBar?.visibility = if (state) View.VISIBLE else View.GONE
-        binding?.progressBarDialog?.tvTunggu?.visibility = if (state) View.VISIBLE else View.GONE
     }
 
     override fun onDestroyView() {
