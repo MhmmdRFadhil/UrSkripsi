@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
 import com.capstone.urskripsi.utils.FirebaseKey
 import com.google.firebase.auth.FirebaseAuth
@@ -29,9 +30,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         mAuth = FirebaseAuth.getInstance()
 
-        binding?.apply {
-            btnAdd.setOnClickListener(this@HomeFragment)
-        }
+        binding?.layoutEmpty?.btnTambahBaru?.setOnClickListener(this@HomeFragment)
 
         retrieveData()
     }
@@ -46,7 +45,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 if (snapshot.exists()) {
                     val name = snapshot.child(FirebaseKey.FIREBASE_NAME).value
                     binding?.apply {
-                        tvName.text = name.toString()
+                        layoutTaskProgress.tvGreeting.text = getString(R.string.hello, name.toString())
                     }
 
                 }
@@ -60,10 +59,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         if (view != null) {
             when (view.id) {
-                binding?.btnAdd?.id -> {}
+                binding?.layoutEmpty?.btnTambahBaru?.id -> {}
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

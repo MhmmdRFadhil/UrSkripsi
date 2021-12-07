@@ -10,8 +10,9 @@
     <color name="unselectedTab">#E5E5E5</color>
     <color name="buttonRippleColor">#33AAAAAA</color>
     <color name="textLogout">#ff3333</color>
-    <color name="grey_text">#757575</color>
+    <color name="grey_text">#616161</color>
     <color name="background_progress">#CCFFFFFF</color>
     <color name="button_disable">#AAAAAA</color>
     <color name="progress_color">#C4C4C4</color>
+    <color name="background_edit_text">#F4F6F8</color>
 </resources>
