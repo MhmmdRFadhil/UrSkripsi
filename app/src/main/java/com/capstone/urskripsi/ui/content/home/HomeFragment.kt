@@ -8,11 +8,16 @@ import androidx.fragment.app.Fragment
 import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
+import com.capstone.urskripsi.utils.FirebaseKey
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.*
 
 class HomeFragment : Fragment(), View.OnClickListener {
 
     private var binding: FragmentHomeBinding? = null
+    private lateinit var databaseReference: DatabaseReference
+    private lateinit var mAuth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,13 +35,37 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 binding?.toolbar?.root,
                 false
             )
-
-            binding?.apply {
-                btnAdd.setOnClickListener(this@HomeFragment)
-            }
         }
+
+        mAuth = FirebaseAuth.getInstance()
+
+        binding?.apply {
+            btnAdd.setOnClickListener(this@HomeFragment)
+        }
+
+        retrieveData()
     }
 
+    private fun retrieveData() {
+        val emailUser = mAuth.currentUser?.email
+        val setEmail = emailUser?.replace('.', ',')
+        databaseReference = FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
+
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if (snapshot.exists()) {
+                    val name = snapshot.child(FirebaseKey.FIREBASE_NAME).value
+                    binding?.apply {
+                        tvName.text = name.toString()
+                    }
+
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+            }
+        })
+    }
 
     override fun onClick(view: View?) {
         if (view != null) {

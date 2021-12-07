@@ -50,7 +50,6 @@
     <string name="about">Tentang</string>
     <string name="developer">Pengembang</string>
     <string name="lorem_ipsum_dolor">Lorem ipsum dolor</string>
-    <string name="nama_belum_diatur">Nama belum diatur</string>
     <string name="logout">Keluar</string>
     <string name="logout_auth">Keluar dari akun</string>
 
@@ -91,6 +90,6 @@
     <string name="_0">0</string>
     <string name="percent">%</string>
     <string name="task_belum_dibuat">Task belum dibuat</string>
-    <string name="add_button">Add Button</string>
+    <string name="add_task">Add Task</string>
 
 </resources>

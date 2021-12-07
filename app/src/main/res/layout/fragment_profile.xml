@@ -18,7 +18,9 @@
         android:layout_width="match_parent"
         android:layout_height="100dp"
         android:layout_marginTop="8dp"
-        android:background="@color/white"
+        android:background="@drawable/bg_pressed"
+        android:clickable="true"
+        android:focusable="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolbar" />
@@ -135,7 +137,7 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:background="@color/white"
+        android:background="@drawable/bg_pressed"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/rvAbout" />
