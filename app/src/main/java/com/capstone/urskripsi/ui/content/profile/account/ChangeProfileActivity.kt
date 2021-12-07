@@ -98,6 +98,7 @@ class ChangeProfileActivity : AppCompatActivity() {
         val emailUser = mAuth.currentUser?.email
         val setEmail = emailUser?.replace('.', ',')
         databaseReference = FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
+        databaseReference.keepSynced(true)
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {

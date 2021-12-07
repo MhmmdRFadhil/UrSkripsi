@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityChangePasswordBinding
+import com.capstone.urskripsi.utils.Utility.hide
+import com.capstone.urskripsi.utils.Utility.show
 import com.capstone.urskripsi.utils.Utility.showToast
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
 import com.google.firebase.auth.EmailAuthProvider
@@ -48,8 +50,10 @@ class ChangePasswordActivity : AppCompatActivity() {
 
                         user.reauthenticate(credential).addOnCompleteListener { task ->
                             if (task.isSuccessful) {
+                                binding.progressBarDialog.root.show()
                                 user.updatePassword(newPassword).addOnCompleteListener { update ->
                                     if (update.isSuccessful) {
+                                        binding.progressBarDialog.root.hide()
                                         showToast(
                                             getString(R.string.change_password_success),
                                             this@ChangePasswordActivity
@@ -57,6 +61,7 @@ class ChangePasswordActivity : AppCompatActivity() {
                                     }
                                 }
                             } else {
+                                binding.progressBarDialog.root.hide()
                                 showToast(
                                     getString(R.string.change_password_failed, task.exception),
                                     this@ChangePasswordActivity
