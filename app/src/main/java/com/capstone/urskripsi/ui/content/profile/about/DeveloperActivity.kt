@@ -1,17 +1,11 @@
 package com.capstone.urskripsi.ui.content.profile.about
 
-import android.content.Intent
-import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityDeveloperBinding
-import com.capstone.urskripsi.utils.Utility.loadImageUrl
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
@@ -67,39 +61,10 @@ class DeveloperActivity : AppCompatActivity() {
             developerAdapter.setOnItemClickedCallback(object :
                 DeveloperAdapter.OnItemClickedCallback {
                 override fun onItemClick(developer: Developer) {
-                    bottomSheetDialogDetail(developer)
+                    val developerBottomSheetFragment = DeveloperBottomSheetFragment(developer)
+                    developerBottomSheetFragment.show(supportFragmentManager, "TAG")
                 }
             })
-        }
-    }
-
-    private fun bottomSheetDialogDetail(developer: Developer) {
-        val view = View.inflate(this, R.layout.bottom_sheet_dialog_developer, null)
-
-        bottomSheetDialog.setContentView(view)
-        bottomSheetDialog.show()
-
-        val developerImage = bottomSheetDialog.findViewById<ImageView>(R.id.developer_img)
-        val developerName = bottomSheetDialog.findViewById<TextView>(R.id.tv_developer_name)
-        val universityNameDeveloper =
-            bottomSheetDialog.findViewById<TextView>(R.id.tv_university_name_developer)
-        val imgGithub = bottomSheetDialog.findViewById<ImageView>(R.id.imgGithub)
-        val imgLinkedIn = bottomSheetDialog.findViewById<ImageView>(R.id.imgLinkedIn)
-        val imgInstagram = bottomSheetDialog.findViewById<ImageView>(R.id.imgInstagram)
-
-        developer.apply {
-            developerImage?.loadImageUrl(image.toString())
-            developerName?.text = name.toString()
-            universityNameDeveloper?.text = universityName.toString()
-            imgGithub?.setOnClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(developer.github)))
-            }
-            imgLinkedIn?.setOnClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(developer.linkedIn)))
-            }
-            imgInstagram?.setOnClickListener {
-                startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(developer.instagram)))
-            }
         }
     }
 
