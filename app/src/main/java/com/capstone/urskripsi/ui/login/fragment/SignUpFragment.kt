@@ -9,7 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentSignUpBinding
-import com.capstone.urskripsi.model.UserDataLogin
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_EMAIL
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
 import com.capstone.urskripsi.utils.Utility.showToast
@@ -94,8 +95,10 @@ class SignUpFragment : Fragment(), View.OnClickListener {
         val setEmail = email.replace('.', ',')
 
         databaseReference = FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
-        val userDataLogin = UserDataLogin(email, name)
-        databaseReference.setValue(userDataLogin)
+        val map = HashMap<String, Any>()
+        map[FIREBASE_EMAIL] = email
+        map[FIREBASE_NAME] = name
+        databaseReference.setValue(map)
     }
 
     private fun changeFragmentToSignIn() {

@@ -3,7 +3,7 @@
     package="com.capstone.urskripsi">
     <!-- Internet permission -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!--Storage permission-->
+    <!-- Storage permission -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
@@ -14,6 +14,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UrSkripsi">
+        <activity
+            android:name=".ui.content.profile.about.DeveloperActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.content.profile.account.ChangePasswordActivity"
             android:exported="false" />

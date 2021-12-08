@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
-import com.capstone.urskripsi.utils.FirebaseKey
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -43,7 +43,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
-                    val name = snapshot.child(FirebaseKey.FIREBASE_NAME).value
+                    val name = snapshot.child(FIREBASE_NAME).value
                     binding?.apply {
                         layoutTaskProgress.tvGreeting.text = getString(R.string.hello, name.toString())
                     }

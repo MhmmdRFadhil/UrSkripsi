@@ -10,12 +10,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentProfileBinding
+import com.capstone.urskripsi.ui.content.profile.about.DeveloperActivity
 import com.capstone.urskripsi.ui.content.profile.account.ChangePasswordActivity
 import com.capstone.urskripsi.ui.content.profile.account.ChangeProfileActivity
 import com.capstone.urskripsi.ui.login.LoginActivity
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_PHOTO
 import com.capstone.urskripsi.utils.DividerItemDecorator
-import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_PHOTO
-import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Utility.loadImageUrl
 import com.capstone.urskripsi.utils.Utility.showToast
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
@@ -90,7 +91,9 @@ class ProfileFragment : Fragment() {
 
             aboutAdapter.setOnItemClickedCallback(object : OnItemClickedCallback {
                 override fun onItemClick(position: Int) {
-
+                    if (position == 0) {
+                        startActivity(Intent(context, DeveloperActivity::class.java))
+                    }
                 }
             })
         }

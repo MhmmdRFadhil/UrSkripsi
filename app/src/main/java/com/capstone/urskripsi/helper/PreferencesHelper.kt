@@ -3,9 +3,9 @@ package com.capstone.urskripsi.helper
 import android.content.Context
 import android.content.SharedPreferences
 
-class PreferencesHelper(context: Context) {
+class PreferencesHelper(context: Context, prefName: String) {
     private var sharedPreferences: SharedPreferences =
-        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+        context.getSharedPreferences(prefName, Context.MODE_PRIVATE)
     private val editor: SharedPreferences.Editor = sharedPreferences.edit()
 
     fun setDataBoolean(key: String, value: Boolean) {
@@ -23,9 +23,4 @@ class PreferencesHelper(context: Context) {
     fun clearData() {
         editor.clear().apply()
     }
-
-    companion object {
-        private const val PREF_NAME = "user_pref"
-    }
-
 }

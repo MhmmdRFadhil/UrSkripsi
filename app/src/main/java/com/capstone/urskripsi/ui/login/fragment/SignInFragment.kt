@@ -16,9 +16,12 @@ import com.capstone.urskripsi.MainActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentSignInBinding
 import com.capstone.urskripsi.helper.PreferencesHelper
-import com.capstone.urskripsi.model.UserDataLogin
 import com.capstone.urskripsi.ui.login.ForgotPasswordActivity
 import com.capstone.urskripsi.utils.Constant
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_EMAIL
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_PHOTO
+import com.capstone.urskripsi.utils.Constant.Companion.PREF_USER_LOGIN
 import com.capstone.urskripsi.utils.Utility.getStringFromName
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
@@ -73,7 +76,7 @@ class SignInFragment : Fragment(), View.OnClickListener {
             btnGoogle.setOnClickListener(this@SignInFragment)
         }
 
-        sharedPreferences = PreferencesHelper(requireContext())
+        sharedPreferences = PreferencesHelper(requireContext(), PREF_USER_LOGIN)
 
         mAuth = FirebaseAuth.getInstance()
         checkUserIfAlreadyLogin()
@@ -174,8 +177,11 @@ class SignInFragment : Fragment(), View.OnClickListener {
         val resizePhoto = getPhoto?.replace("s96-c", "s400-c").toString()
 
         databaseReference = FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
-        val userDataLogin = UserDataLogin(email, getName, resizePhoto)
-        databaseReference.setValue(userDataLogin)
+        val map = HashMap<String, Any>()
+        map[FIREBASE_EMAIL] = email
+        map[FIREBASE_NAME] = getName
+        map[FIREBASE_PHOTO] = resizePhoto
+        databaseReference.setValue(map)
     }
 
     // shared preference to save data login

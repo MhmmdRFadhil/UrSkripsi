@@ -10,11 +10,11 @@ import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityChangeProfileBinding
-import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_EMAIL
-import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_PHOTO
-import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_STUDY_PROGRAM
-import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_UNIVERSITY_NAME
-import com.capstone.urskripsi.utils.FirebaseKey.Companion.FIREBASE_NAME
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_EMAIL
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_PHOTO
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_STUDY_PROGRAM
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_UNIVERSITY_NAME
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.loadImageURI
 import com.capstone.urskripsi.utils.Utility.loadImageUrl

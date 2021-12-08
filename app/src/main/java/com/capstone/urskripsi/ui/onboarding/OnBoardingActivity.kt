@@ -1,13 +1,14 @@
 package com.capstone.urskripsi.ui.onboarding
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityOnBoardingBinding
+import com.capstone.urskripsi.helper.PreferencesHelper
 import com.capstone.urskripsi.ui.login.LoginActivity
+import com.capstone.urskripsi.utils.Constant.Companion.FIRST_TIME_RUN
+import com.capstone.urskripsi.utils.Constant.Companion.PREF_ON_BOARDING
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
 import com.google.android.material.tabs.TabLayout
@@ -16,7 +17,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityOnBoardingBinding
     private lateinit var onBoardingAdapter: OnBoardingAdapter
-    private lateinit var sharedPreferences: SharedPreferences
+    private lateinit var sharedPreferences: PreferencesHelper
     private var position = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,7 @@ class OnBoardingActivity : AppCompatActivity() {
         binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        sharedPreferences = applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
+        sharedPreferences = PreferencesHelper(this, PREF_ON_BOARDING)
 
         // go MainActivity if not first time run
         if (restorePrefData()) {
@@ -114,15 +115,8 @@ class OnBoardingActivity : AppCompatActivity() {
     }
 
     private fun savePrefData() {
-        val editor = sharedPreferences.edit()
-        editor.putBoolean(FIRST_TIME_RUN, true)
-        editor.apply()
+        sharedPreferences.setDataBoolean(FIRST_TIME_RUN, true)
     }
 
-    private fun restorePrefData(): Boolean = sharedPreferences.getBoolean(FIRST_TIME_RUN, false)
-
-
-    companion object {
-        private const val FIRST_TIME_RUN = "isFirstTime"
-    }
+    private fun restorePrefData(): Boolean = sharedPreferences.getDataBoolean(FIRST_TIME_RUN)
 }
