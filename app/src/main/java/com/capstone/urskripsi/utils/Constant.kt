@@ -18,5 +18,6 @@ class Constant {
         const val FIREBASE_EMAIL = "email"
         const val FIREBASE_UNIVERSITY_NAME = "universityName"
         const val FIREBASE_STUDY_PROGRAM = "studyProgram"
+        const val FIREBASE_PROGRESS = "progress"
     }
 }

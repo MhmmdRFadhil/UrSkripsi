@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    card_view:cardCornerRadius="8dp"
+    card_view:cardElevation="4dp"
+    card_view:cardPreventCornerOverlap="false"
+    card_view:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/avatar" />
+
+        <TextView
+            android:id="@+id/tv_nama"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/poppins_medium"
+            android:maxLines="1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            card_view:layout_constraintBottom_toTopOf="@+id/progress_indicator_bar"
+            card_view:layout_constraintEnd_toStartOf="@+id/tv_progress"
+            card_view:layout_constraintHorizontal_bias="0.5"
+            card_view:layout_constraintStart_toEndOf="@+id/imgProfile"
+            card_view:layout_constraintTop_toTopOf="@+id/imgProfile"
+            card_view:layout_constraintVertical_chainStyle="packed"
+            tools:text="@string/nama" />
+
+        <TextView
+            android:id="@+id/tv_progress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_nama"
+            card_view:layout_constraintEnd_toStartOf="@+id/tv_percent"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_nama"
+            tools:text="40" />
+
+        <TextView
+            android:id="@+id/tv_percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="@string/percent"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_nama"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_nama" />
+
+        <com.google.android.material.progressindicator.LinearProgressIndicator
+            android:id="@+id/progress_indicator_bar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:background="@color/progress_color"
+            android:progressBackgroundTint="@color/progress_color"
+            android:secondaryProgressTint="@color/primaryColor"
+            card_view:layout_constraintBottom_toBottomOf="@+id/imgProfile"
+            card_view:layout_constraintEnd_toEndOf="@+id/tv_percent"
+            card_view:layout_constraintHorizontal_bias="0.5"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_nama"
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_nama" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
