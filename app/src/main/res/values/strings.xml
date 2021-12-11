@@ -65,10 +65,12 @@
     <!--Change Password-->
     <string name="old_password">Kata sandi lama</string>
     <string name="new_password">Kata sandi baru</string>
+    <string name="confirm_password">Ulangi kata sandi</string>
     <string name="change">Ubah</string>
     <string name="title_change_password">Ubah \nKata Sandi</string>
     <string name="change_password_success">Kata sandi berhasil diubah</string>
     <string name="change_password_failed">Kata sandi gagal diubah karena %1$s</string>
+    <string name="password_is_not_the_same">Password tidak sama</string>
 
     <!--Web Client ID-->
     <string name="web_client_id">default_web_client_id</string>
@@ -107,5 +109,8 @@
     <string name="instagram_developer_2">https://www.instagram.com/rzqnfdhl/</string>
     <string name="linkedin_developer_2">https://www.linkedin.com/in/rzqnfadhil/</string>
     <string name="ikuti_sosial_media_saya">Ikuti sosial media saya</string>
+
+    <!--Leaderboard-->
+    <string name="done">selesai</string>
 
 </resources>

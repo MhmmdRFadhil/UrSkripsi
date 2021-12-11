@@ -3,6 +3,7 @@ package com.capstone.urskripsi.ui.content.leaderboard
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ItemRowLeaderboardBinding
 import com.capstone.urskripsi.utils.Utility.loadImageUrl
 
@@ -12,10 +13,21 @@ class LeaderBoardAdapter(private val leaderBoard: ArrayList<LeaderBoard>) :
         RecyclerView.ViewHolder(binding.root) {
         fun bind(leaderBoard: LeaderBoard) {
             with(binding) {
-                imgProfile.loadImageUrl(leaderBoard.image.toString())
+                if (leaderBoard.image != null) {
+                    imgProfile.loadImageUrl(leaderBoard.image.toString())
+                } else {
+                    imgProfile.setImageResource(R.drawable.avatar)
+                }
+
                 tvNama.text = leaderBoard.name
-                tvProgress.text = leaderBoard.progressBar
-                progressIndicatorBar.progress = leaderBoard.progressBar?.toInt() as Int
+                tvProgress.text = leaderBoard.progressBar.toString()
+                progressIndicatorBar.progress = leaderBoard.progressBar as Int
+
+                if (leaderBoard.progressBar == 100) {
+                    imgBadge.setImageResource(R.drawable.ic_badge_completed)
+                } else {
+                    imgBadge.setImageResource(R.drawable.ic_badge)
+                }
             }
         }
     }

@@ -60,17 +60,27 @@ class LeaderBoardFragment : Fragment() {
                             val photo = data.child(FIREBASE_PHOTO).value
                             val progress = data.child(FIREBASE_PROGRESS).value
                             if (progress != null) {
-                                leaderBoard.add(
-                                    LeaderBoard(
-                                        photo.toString(),
-                                        name.toString(),
-                                        progress.toString()
+                                if (photo != null) {
+                                    leaderBoard.add(
+                                        LeaderBoard(
+                                            photo.toString(),
+                                            name.toString(),
+                                            progress.toString().toInt()
+                                        )
                                     )
-                                )
+                                } else {
+                                    leaderBoard.add(
+                                        LeaderBoard(
+                                            null,
+                                            name.toString(),
+                                            progress.toString().toInt()
+                                        )
+                                    )
+                                }
                             }
                         }
                         leaderBoard.sortByDescending {
-                            it.progressBar?.toInt()
+                            it.progressBar
                         }
                         showRecyclerView()
                     }

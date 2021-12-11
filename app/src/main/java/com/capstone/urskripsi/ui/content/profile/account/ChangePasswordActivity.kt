@@ -36,37 +36,55 @@ class ChangePasswordActivity : AppCompatActivity() {
             btnChangePassword.setOnClickListener {
                 val oldPassword = edtOldPassword.text.toString().trim()
                 val newPassword = edtNewPassword.text.toString().trim()
+                val confirmPassword = edtConfirmNewPassword.text.toString().trim()
 
-                if (oldPassword.isEmpty()) {
-                    edtOldPassword.error = getString(R.string.password_empty)
-                } else if (newPassword.isEmpty()) {
-                    edtNewPassword.error = getString(R.string.password_empty)
-                } else {
-                    val user = mAuth.currentUser
-                    val userEmail = user?.email
+                when {
+                    oldPassword.isEmpty() -> {
+                        edtOldPassword.error = getString(R.string.password_empty)
+                    }
+                    newPassword.isEmpty() -> {
+                        edtNewPassword.error = getString(R.string.password_empty)
+                    }
+                    confirmPassword.isEmpty() -> {
+                        edtConfirmNewPassword.error = getString(R.string.password_empty)
+                    }
+                    else -> {
+                        when (newPassword) {
+                            confirmPassword -> {
+                                val user = mAuth.currentUser
+                                val userEmail = user?.email
 
-                    if (user != null && userEmail != null) {
-                        val credential = EmailAuthProvider.getCredential(userEmail, oldPassword)
+                                if (user != null && userEmail != null) {
+                                    val credential =
+                                        EmailAuthProvider.getCredential(userEmail, oldPassword)
 
-                        user.reauthenticate(credential).addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                binding.progressBarDialog.root.show()
-                                user.updatePassword(newPassword).addOnCompleteListener { update ->
-                                    if (update.isSuccessful) {
-                                        binding.progressBarDialog.root.hide()
-                                        showToast(
-                                            getString(R.string.change_password_success),
-                                            this@ChangePasswordActivity
-                                        )
+                                    user.reauthenticate(credential).addOnCompleteListener { task ->
+                                        if (task.isSuccessful) {
+                                            binding.progressBarDialog.root.show()
+                                            user.updatePassword(newPassword)
+                                                .addOnCompleteListener { update ->
+                                                    if (update.isSuccessful) {
+                                                        binding.progressBarDialog.root.hide()
+                                                        showToast(
+                                                            getString(R.string.change_password_success),
+                                                            this@ChangePasswordActivity
+                                                        )
+                                                    }
+                                                }
+                                        } else {
+                                            binding.progressBarDialog.root.hide()
+                                            showToast(
+                                                getString(
+                                                    R.string.change_password_failed,
+                                                    task.exception
+                                                ),
+                                                this@ChangePasswordActivity
+                                            )
+                                        }
                                     }
                                 }
-                            } else {
-                                binding.progressBarDialog.root.hide()
-                                showToast(
-                                    getString(R.string.change_password_failed, task.exception),
-                                    this@ChangePasswordActivity
-                                )
                             }
+                            else -> showToast(getString(R.string.password_is_not_the_same), this@ChangePasswordActivity)
                         }
                     }
                 }

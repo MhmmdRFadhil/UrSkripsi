@@ -16,7 +16,8 @@
         android:theme="@style/Theme.UrSkripsi">
         <activity
             android:name=".ui.content.profile.about.DeveloperActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.UrSkripsi.CustomWindowBackground" />
         <activity
             android:name=".ui.content.profile.account.ChangePasswordActivity"
             android:exported="false" />

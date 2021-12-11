@@ -19,12 +19,10 @@
 
         <ImageView
             android:id="@+id/imgProfile"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription"
@@ -35,57 +33,78 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/poppins_medium"
+            android:layout_marginEnd="24dp"
+            android:fontFamily="@font/poppins_semi_bold"
             android:maxLines="1"
             android:textColor="@color/black"
             android:textSize="16sp"
-            card_view:layout_constraintBottom_toTopOf="@+id/progress_indicator_bar"
-            card_view:layout_constraintEnd_toStartOf="@+id/tv_progress"
-            card_view:layout_constraintHorizontal_bias="0.5"
+            card_view:layout_constraintEnd_toStartOf="@+id/img_badge"
             card_view:layout_constraintStart_toEndOf="@+id/imgProfile"
             card_view:layout_constraintTop_toTopOf="@+id/imgProfile"
-            card_view:layout_constraintVertical_chainStyle="packed"
             tools:text="@string/nama" />
+
+        <ImageView
+            android:id="@+id/img_badge"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            tools:src="@drawable/ic_badge"
+            card_view:layout_constraintBottom_toBottomOf="@+id/progress_indicator_bar"
+            card_view:layout_constraintEnd_toEndOf="parent"
+            card_view:layout_constraintTop_toTopOf="@+id/progress_indicator_bar"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_progress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="@font/poppins_semi_bold"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            card_view:layout_constraintBottom_toBottomOf="@+id/tv_nama"
-            card_view:layout_constraintEnd_toStartOf="@+id/tv_percent"
-            card_view:layout_constraintTop_toTopOf="@+id/tv_nama"
+            android:textSize="15sp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="@+id/tv_nama"
+            card_view:layout_constraintTop_toBottomOf="@+id/progress_indicator_bar"
             tools:text="40" />
 
         <TextView
             android:id="@+id/tv_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
             android:fontFamily="@font/poppins_semi_bold"
             android:text="@string/percent"
-            android:textColor="@color/black"
-            android:textSize="16sp"
-            card_view:layout_constraintBottom_toBottomOf="@+id/tv_nama"
-            card_view:layout_constraintEnd_toEndOf="parent"
-            card_view:layout_constraintTop_toTopOf="@+id/tv_nama" />
+            android:textSize="15sp"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_progress"
+            card_view:layout_constraintStart_toEndOf="@+id/tv_progress"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_progress" />
+
+        <TextView
+            android:id="@+id/tv_done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/done"
+            android:textSize="15sp"
+            card_view:layout_constraintBottom_toBottomOf="@+id/tv_percent"
+            card_view:layout_constraintStart_toEndOf="@+id/tv_percent"
+            card_view:layout_constraintTop_toTopOf="@+id/tv_percent" />
 
         <com.google.android.material.progressindicator.LinearProgressIndicator
             android:id="@+id/progress_indicator_bar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:background="@color/progress_color"
-            android:progressBackgroundTint="@color/progress_color"
-            android:secondaryProgressTint="@color/primaryColor"
-            card_view:layout_constraintBottom_toBottomOf="@+id/imgProfile"
-            card_view:layout_constraintEnd_toEndOf="@+id/tv_percent"
-            card_view:layout_constraintHorizontal_bias="0.5"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="24dp"
+            android:max="100"
+            android:progress="80"
+            card_view:indicatorColor="@color/primaryColor"
+            card_view:layout_constraintEnd_toStartOf="@+id/img_badge"
             card_view:layout_constraintStart_toStartOf="@+id/tv_nama"
-            card_view:layout_constraintTop_toBottomOf="@+id/tv_nama" />
+            card_view:layout_constraintTop_toBottomOf="@+id/tv_nama"
+            card_view:trackColor="@color/progress_color"
+            card_view:trackCornerRadius="10dp"
+            card_view:trackThickness="8dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
