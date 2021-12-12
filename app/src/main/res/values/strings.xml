@@ -26,7 +26,6 @@
     <string name="nama">Nama</string>
     <string name="selamat_datang">Selamat Datang 👋</string>
     <string name="buat_akun_baru">Buat Akun Baru</string>
-    <string name="tunggu">Tunggu &#8230;</string>
     <string name="invalid_formail_email">Format email salah</string>
     <string name="email_empty">Masukan email</string>
     <string name="password_empty">Masukan password</string>
@@ -98,7 +97,7 @@
     <!--Developer-->
     <string name="developer_image_1">https://avatars.githubusercontent.com/u/38599307?v=4</string>
     <string name="developer_name_1">Naufal Abiyyu Mayusuf</string>
-    <string name="university_name_developer_1">Ilmu Komputer</string>
+    <string name="university_name_developer_1">Universitas Lambung Mangkurat</string>
     <string name="github_developer_1">https://github.com/Naufal0010</string>
     <string name="instagram_developer_1">https://www.instagram.com/naufalabiyyumysf/</string>
     <string name="linkedin_developer_1">https://www.linkedin.com/in/naufal-abiyyu/</string>

@@ -21,7 +21,8 @@ class OnBoardingAdapter(private val context: Context, private val onBoarding: Li
     }
 
     override fun instantiateItem(container: ViewGroup, position: Int): Any {
-        val view = LayoutInflater.from(context).inflate(R.layout.item_row_on_boarding, container, false)
+        val view =
+            LayoutInflater.from(context).inflate(R.layout.item_row_on_boarding, container, false)
 
         val layoutContent: View = view.findViewById(R.id.layoutContent)
         val imageViewOnBoarding: ImageView = layoutContent.rootView.findViewById(R.id.imgOnBoarding)

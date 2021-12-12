@@ -123,7 +123,6 @@ class ChangeProfileActivity : AppCompatActivity() {
 
                         checkInput(
                             name.toString(),
-                            email.toString(),
                             universityName.toString(),
                             studyProgram.toString(),
                         )
@@ -140,26 +139,22 @@ class ChangeProfileActivity : AppCompatActivity() {
     // Set State Button Enable or Disable
     private fun checkInput(
         name: String?,
-        email: String?,
         universityName: String?,
         studyProgram: String?,
     ) {
         binding.apply {
-            val edt = listOf(edtName, edtEmail, edtUniversityName, edtStudyProgram)
+            val edt = listOf(edtName, edtUniversityName, edtStudyProgram)
 
             for (editText in edt) {
-
                 editText.addTextChangedListener(object : TextWatcher {
                     override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
                     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                         val editTextName = edtName.text.toString().trim()
-                        val editTextEmail = edtEmail.text.toString().trim()
                         val editTextUniversityName = edtUniversityName.text.toString().trim()
                         val editTextStudyProgram = edtStudyProgram.text.toString().trim()
 
                         if ((editTextName.isNotEmpty() && editTextName != name) ||
-                            (editTextEmail.isNotEmpty() && editTextEmail != email) ||
                             (editTextUniversityName.isNotEmpty() && editTextUniversityName != universityName) ||
                             (editTextStudyProgram.isNotEmpty() && editTextStudyProgram != studyProgram)
                         ) {
@@ -181,7 +176,8 @@ class ChangeProfileActivity : AppCompatActivity() {
                 })
             }
         }
-        saveDataUser(name, email, universityName, studyProgram)
+        binding.edtEmail.isEnabled = false
+        saveDataUser(name, universityName, studyProgram)
         binding.toolbar.btnSave.setStateColor(this, R.color.button_disable, false)
     }
     // End
@@ -189,7 +185,6 @@ class ChangeProfileActivity : AppCompatActivity() {
     // Save Data User to Firebase
     private fun saveDataUser(
         name: String?,
-        email: String?,
         universityName: String?,
         studyProgram: String?
     ) {
@@ -197,25 +192,26 @@ class ChangeProfileActivity : AppCompatActivity() {
             toolbar.btnSave.setOnClickListener {
 
                 val txtName = edtName.text.toString().trim()
-                val txtEmail = edtEmail.text.toString().trim()
                 val txtUniversityName = edtUniversityName.text.toString().trim()
                 val txtStudyProgram = edtStudyProgram.text.toString().trim()
 
                 if (imgUri != null) {
                     if ((txtName != name) ||
-                        (txtEmail != email) ||
                         (txtUniversityName != universityName) ||
                         (txtStudyProgram != studyProgram)
                     ) {
                         val map = HashMap<String, Any>()
                         map[FIREBASE_NAME] = txtName
-                        map[FIREBASE_EMAIL] = txtEmail
                         map[FIREBASE_UNIVERSITY_NAME] = txtUniversityName
                         map[FIREBASE_STUDY_PROGRAM] = txtStudyProgram
 
                         databaseReference.updateChildren(map)
                         uploadPhoto(imgUri)
+
                         imgUri = null
+                        edtName.clearFocus()
+                        edtUniversityName.clearFocus()
+                        edtStudyProgram.clearFocus()
                     } else {
                         uploadPhoto(imgUri)
                         imgUri = null
@@ -223,7 +219,6 @@ class ChangeProfileActivity : AppCompatActivity() {
                 } else {
                     val map = HashMap<String, Any>()
                     map[FIREBASE_NAME] = txtName
-                    map[FIREBASE_EMAIL] = txtEmail
                     map[FIREBASE_UNIVERSITY_NAME] = txtUniversityName
                     map[FIREBASE_STUDY_PROGRAM] = txtStudyProgram
 
@@ -231,7 +226,12 @@ class ChangeProfileActivity : AppCompatActivity() {
 
                     databaseReference.updateChildren(map).addOnSuccessListener {
                         binding.progressBar.root.hide()
+
                         imgUri != null
+                        edtName.clearFocus()
+                        edtUniversityName.clearFocus()
+                        edtStudyProgram.clearFocus()
+
                         showToast(getString(R.string.save_success), this@ChangeProfileActivity)
                     }.addOnFailureListener {
                         binding.progressBar.root.hide()

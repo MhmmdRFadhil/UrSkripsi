@@ -64,7 +64,16 @@ class ChangePasswordActivity : AppCompatActivity() {
                                             user.updatePassword(newPassword)
                                                 .addOnCompleteListener { update ->
                                                     if (update.isSuccessful) {
-                                                        binding.progressBarDialog.root.hide()
+                                                        binding.apply {
+                                                            progressBarDialog.root.hide()
+                                                            edtOldPassword.text.clear()
+                                                            edtNewPassword.text.clear()
+                                                            edtConfirmNewPassword.text.clear()
+                                                            
+                                                            edtOldPassword.clearFocus()
+                                                            edtNewPassword.clearFocus()
+                                                            edtConfirmNewPassword.clearFocus()
+                                                        }
                                                         showToast(
                                                             getString(R.string.change_password_success),
                                                             this@ChangePasswordActivity
@@ -84,7 +93,10 @@ class ChangePasswordActivity : AppCompatActivity() {
                                     }
                                 }
                             }
-                            else -> showToast(getString(R.string.password_is_not_the_same), this@ChangePasswordActivity)
+                            else -> showToast(
+                                getString(R.string.password_is_not_the_same),
+                                this@ChangePasswordActivity
+                            )
                         }
                     }
                 }

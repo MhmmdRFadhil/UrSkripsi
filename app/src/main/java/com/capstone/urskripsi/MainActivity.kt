@@ -18,7 +18,10 @@ class MainActivity : AppCompatActivity() {
 
         val navigationController = Navigation.findNavController(this, R.id.navigationHost)
 
-        ExpandableBottomBarNavigationUI.setupWithNavController(binding.bottomNavigation, navigationController)
+        ExpandableBottomBarNavigationUI.setupWithNavController(
+            binding.bottomNavigation,
+            navigationController
+        )
 
         checkUserIfAlreadyLogin()
     }

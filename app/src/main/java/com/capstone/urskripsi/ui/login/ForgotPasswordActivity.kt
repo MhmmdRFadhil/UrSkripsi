@@ -53,6 +53,10 @@ class ForgotPasswordActivity : AppCompatActivity() {
         binding.progressBarDialog.root.show()
         mAuth.sendPasswordResetEmail(email).addOnSuccessListener {
             binding.progressBarDialog.root.hide()
+            binding.edtEmail.apply {
+                text.clear()
+                clearFocus()
+            }
             showToast(getString(R.string.email_send_success), this@ForgotPasswordActivity)
         }.addOnFailureListener {
             binding.progressBarDialog.root.hide()

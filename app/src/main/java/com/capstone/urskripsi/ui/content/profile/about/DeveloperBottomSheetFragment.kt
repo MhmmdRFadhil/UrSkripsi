@@ -10,7 +10,7 @@ import com.capstone.urskripsi.databinding.BottomSheetDialogDeveloperBinding
 import com.capstone.urskripsi.utils.Utility.loadImageUrl
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class DeveloperBottomSheetFragment(private val developer: Developer): BottomSheetDialogFragment() {
+class DeveloperBottomSheetFragment(private val developer: Developer) : BottomSheetDialogFragment() {
 
     private var binding: BottomSheetDialogDeveloperBinding? = null
     override fun onCreateView(

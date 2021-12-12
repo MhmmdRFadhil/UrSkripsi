@@ -8,6 +8,8 @@ import androidx.fragment.app.Fragment
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
+import com.capstone.urskripsi.utils.Utility.hide
+import com.capstone.urskripsi.utils.Utility.show
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -40,20 +42,37 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val setEmail = emailUser?.replace('.', ',')
         databaseReference = FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
         databaseReference.keepSynced(true)
+        initialState()
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val name = snapshot.child(FIREBASE_NAME).value
                     binding?.apply {
-                        layoutTaskProgress.tvGreeting.text = getString(R.string.hello, name.toString())
+                        layoutTaskProgress.tvGreeting.text =
+                            getString(R.string.hello, name.toString())
                     }
-
                 }
+                finalState()
             }
 
-            override fun onCancelled(error: DatabaseError) {
-            }
+            override fun onCancelled(error: DatabaseError) {}
         })
+    }
+
+    private fun initialState() {
+        binding?.apply {
+            progressBar.root.show()
+            layoutEmpty.root.hide()
+            layoutTaskProgress.root.hide()
+        }
+    }
+
+    private fun finalState() {
+        binding?.apply {
+            progressBar.root.hide()
+            layoutEmpty.root.show()
+            layoutTaskProgress.root.show()
+        }
     }
 
     override fun onClick(view: View?) {

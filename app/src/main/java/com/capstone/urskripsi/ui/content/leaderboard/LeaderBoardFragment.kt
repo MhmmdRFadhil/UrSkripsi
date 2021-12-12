@@ -12,6 +12,8 @@ import com.capstone.urskripsi.databinding.FragmentLeaderBoardBinding
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_PHOTO
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_PROGRESS
+import com.capstone.urskripsi.utils.Utility.hide
+import com.capstone.urskripsi.utils.Utility.show
 import com.capstone.urskripsi.utils.Utility.simpleToolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
@@ -50,6 +52,7 @@ class LeaderBoardFragment : Fragment() {
     private fun retrieveData() {
         databaseReference = FirebaseDatabase.getInstance().getReference("User")
         databaseReference.keepSynced(true)
+        initialState()
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -85,6 +88,7 @@ class LeaderBoardFragment : Fragment() {
                         showRecyclerView()
                     }
                 }
+                finalState()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -102,6 +106,19 @@ class LeaderBoardFragment : Fragment() {
         }
     }
 
+    private fun initialState() {
+        binding?.apply {
+            progressBar.root.show()
+            rvLeaderboard.hide()
+        }
+    }
+
+    private fun finalState() {
+        binding?.apply {
+            progressBar.root.hide()
+            rvLeaderboard.show()
+        }
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
