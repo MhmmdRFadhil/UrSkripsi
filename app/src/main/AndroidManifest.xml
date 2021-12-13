@@ -2,18 +2,20 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.capstone.urskripsi">
     <!-- Internet permission -->
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!-- Storage permission -->
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- Storage permission -->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:name=".utils.FirebaseHandler"
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/ic_logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/ic_logo_rounded"
         android:supportsRtl="true"
         android:theme="@style/Theme.UrSkripsi">
+        <activity
+            android:name=".ui.content.task.AddTaskActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.content.profile.about.DeveloperActivity"
             android:exported="false"
