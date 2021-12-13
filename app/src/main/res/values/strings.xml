@@ -111,5 +111,7 @@
 
     <!--Leaderboard-->
     <string name="done">selesai</string>
+    <string name="buat_task_baru">Buat Task Baru</string>
+    <string name="judul">Judul</string>
 
 </resources>

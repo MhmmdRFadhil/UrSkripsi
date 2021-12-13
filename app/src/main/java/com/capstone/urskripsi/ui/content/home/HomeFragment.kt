@@ -1,5 +1,6 @@
 package com.capstone.urskripsi.ui.content.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
+import com.capstone.urskripsi.ui.content.task.AddTaskActivity
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
@@ -78,7 +80,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         if (view != null) {
             when (view.id) {
-                binding?.layoutEmpty?.btnTambahBaru?.id -> {}
+                binding?.layoutEmpty?.btnTambahBaru?.id -> {
+                    val intent = Intent(requireContext(), AddTaskActivity::class.java)
+                    startActivity(intent)
+                }
             }
         }
     }
