@@ -114,5 +114,8 @@
     <string name="buat_task_baru">Buat Task Baru</string>
     <string name="judul">Judul</string>
     <string name="tambah">Tambah</string>
+    <string name="deskripsi">deskripsi</string>
+    <string name="detail_task">Detail Task</string>
+    <string name="hapus">Hapus</string>
 
 </resources>

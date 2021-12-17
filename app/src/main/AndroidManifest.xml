@@ -14,6 +14,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UrSkripsi">
         <activity
+            android:name=".ui.detail.DetailTaskActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.content.task.AddTaskActivity"
             android:exported="false" />
         <activity

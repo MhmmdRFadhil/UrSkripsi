@@ -4,16 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.content.task.AddTaskActivity">
+    tools:context=".ui.detail.DetailTaskActivity">
 
     <TextView
-        android:id="@+id/tv_buat_task_baru"
+        android:id="@+id/tv_detail_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins_semi_bold"
-        android:text="@string/buat_task_baru"
+        android:text="@string/detail_task"
         android:textColor="@color/black"
         android:textSize="24sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +36,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_buat_task_baru" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_detail_task" />
 
     <EditText
         android:id="@+id/edt_description"
@@ -58,15 +58,16 @@
         app:layout_constraintTop_toBottomOf="@+id/edt_title" />
 
     <Button
-        android:id="@+id/btn_tambah"
-        style="@style/CustomButtonEnable"
+        android:id="@+id/btn_delete"
+        style="@style/CustomButtonHapus"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:drawableStart="@drawable/ic_add"
-        android:text="@string/tambah"
+        android:text="@string/hapus"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edt_description" />
 
