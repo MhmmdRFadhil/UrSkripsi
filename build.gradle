@@ -51,6 +51,7 @@ ext {
 
     // Room
     room_version = "2.4.0"
+    roomCommonVersion = "2.4.0"
 
     // Testing utilities
     jUnitVersion = '1.1.3'
