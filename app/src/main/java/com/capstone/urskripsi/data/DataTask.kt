@@ -10,4 +10,6 @@ object DataTask {
 
     const val DESCRIPTION = "description"
 
+    const val IS_COMPLETED = "is_completed"
+
 }

@@ -6,6 +6,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.capstone.urskripsi.data.DataTask.DESCRIPTION
 import com.capstone.urskripsi.data.DataTask.ID
+import com.capstone.urskripsi.data.DataTask.IS_COMPLETED
 import com.capstone.urskripsi.data.DataTask.TABLE_NAME
 import com.capstone.urskripsi.data.DataTask.TITLE
 
@@ -22,5 +23,8 @@ data class Task(
 
     @NonNull
     @ColumnInfo(name = DESCRIPTION)
-    val description: String
+    val description: String,
+
+    @ColumnInfo(name = IS_COMPLETED)
+    val isCompleted: Boolean
 )
