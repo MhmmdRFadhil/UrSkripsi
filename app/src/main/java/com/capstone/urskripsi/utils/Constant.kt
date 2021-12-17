@@ -19,5 +19,8 @@ class Constant {
         const val FIREBASE_UNIVERSITY_NAME = "universityName"
         const val FIREBASE_STUDY_PROGRAM = "studyProgram"
         const val FIREBASE_PROGRESS = "progress"
+
+        // Task
+        const val TASK_ID = "task_id"
     }
 }

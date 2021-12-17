@@ -28,9 +28,9 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
                 val viewModel = ViewModelProvider(this, factory)[AddTaskViewModel::class.java]
 
                 val newTask = Task(
-                    1,
-                    binding.edtTitle.toString(),
-                    binding.edtDescription.toString(),
+                    0,
+                    binding.edtTitle.text.toString().trim(),
+                    binding.edtDescription.text.toString().trim(),
                     false
                 )
 

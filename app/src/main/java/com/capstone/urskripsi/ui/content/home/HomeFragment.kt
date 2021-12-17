@@ -6,9 +6,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.paging.PagedList
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.capstone.urskripsi.R
+import com.capstone.urskripsi.data.Task
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
+import com.capstone.urskripsi.ui.ViewModelFactory
 import com.capstone.urskripsi.ui.content.task.AddTaskActivity
+import com.capstone.urskripsi.ui.content.task.list.TaskAdapter
+import com.capstone.urskripsi.ui.content.task.list.TaskViewModel
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
@@ -20,6 +28,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private var binding: FragmentHomeBinding? = null
     private lateinit var databaseReference: DatabaseReference
     private lateinit var mAuth: FirebaseAuth
+    private lateinit var viewModel: TaskViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -33,10 +42,28 @@ class HomeFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         mAuth = FirebaseAuth.getInstance()
+        val factory = ViewModelFactory.getInstance(requireContext())
+        viewModel = ViewModelProvider(this, factory)[TaskViewModel::class.java]
+        viewModel.task.observe(viewLifecycleOwner, Observer(this::showRecyclerView))
 
-        binding?.layoutEmpty?.btnTambahBaru?.setOnClickListener(this@HomeFragment)
+
+        binding?.layoutListTask?.tvAddTask?.setOnClickListener(this@HomeFragment)
 
         retrieveData()
+    }
+
+
+    private fun showRecyclerView(task: PagedList<Task>) {
+        binding?.layoutListTask?.apply {
+            rvTask.setHasFixedSize(true)
+            rvTask.layoutManager = LinearLayoutManager(context)
+
+            val taskAdapter = TaskAdapter {it, isCompleted ->
+                viewModel.completeTask(it, isCompleted)
+            }
+            taskAdapter.submitList(task)
+            rvTask.adapter = taskAdapter
+        }
     }
 
     private fun retrieveData() {
@@ -44,7 +71,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val setEmail = emailUser?.replace('.', ',')
         databaseReference = FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
         databaseReference.keepSynced(true)
-        initialState()
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
@@ -54,7 +80,6 @@ class HomeFragment : Fragment(), View.OnClickListener {
                             getString(R.string.hello, name.toString())
                     }
                 }
-                finalState()
             }
 
             override fun onCancelled(error: DatabaseError) {}
@@ -80,7 +105,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onClick(view: View?) {
         if (view != null) {
             when (view.id) {
-                binding?.layoutEmpty?.btnTambahBaru?.id -> {
+                binding?.layoutListTask?.tvAddTask?.id -> {
                     val intent = Intent(requireContext(), AddTaskActivity::class.java)
                     startActivity(intent)
                 }

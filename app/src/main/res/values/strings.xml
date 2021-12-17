@@ -93,7 +93,7 @@
     <string name="no_task">Belum ada tugas</string>
     <string name="desc_no_task">Tambahkan tugas pertama Anda untuk memulai</string>
     <string name="tambah_baru">Tambah baru</string>
-
+    <string name="in_progress">Sedang dikerjakan</string>
     <!--Developer-->
     <string name="developer_image_1">https://avatars.githubusercontent.com/u/38599307?v=4</string>
     <string name="developer_name_1">Naufal Abiyyu Mayusuf</string>
@@ -117,5 +117,7 @@
     <string name="deskripsi">deskripsi</string>
     <string name="detail_task">Detail Task</string>
     <string name="hapus">Hapus</string>
+    <string name="task_marked_complete">Task marked completed</string>
+    <string name="task_marked_active">Task marked active</string>
 
 </resources>
