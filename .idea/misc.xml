@@ -23,6 +23,7 @@
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/ic_baseline_broken_image_24.xml" value="0.22407407407407406" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/ic_baseline_refresh_24.xml" value="0.22407407407407406" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/ic_home.xml" value="0.23981481481481481" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/on_boarding_indicator.xml" value="0.23055555555555557" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/on_boarding_indicator_selected.xml" value="0.23055555555555557" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/drawable/on_boarding_indicator_unselected.xml" value="0.23055555555555557" />
@@ -32,6 +33,7 @@
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_add_task.xml" value="0.4" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_change_password.xml" value="0.2" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_change_profile.xml" value="0.264" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_detail_task.xml" value="0.234375" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_developer.xml" value="0.234375" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_forgot_password.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/activity_login.xml" value="0.2" />
@@ -49,7 +51,7 @@
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_sign_in.xml" value="0.234375" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/fragment_sign_up.xml" value="0.264" />
-        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/home_header.xml" value="0.16296296296296298" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/home_header.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/indicator_view_pager.xml" value="0.234375" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_content_on_boarding.xml" value="0.2" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_content_onboarding.xml" value="0.4" />
@@ -59,9 +61,9 @@
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_on_boarding.xml" value="0.2" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_onboarding.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/item_row_profile.xml" value="0.2" />
-        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/list_task.xml" value="0.19136960600375236" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/list_task.xml" value="0.264" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/login.xml" value="0.4" />
-        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/task_progress.xml" value="0.4" />
+        <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/task_progress.xml" value="0.536" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/test.xml" value="0.4" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/toolbar.xml" value="0.18425925925925926" />
         <entry key="..\:/Aplikasi/AndroidStudio/Capstone/UrSkripsi/app/src/main/res/layout/toolbar_with_button.xml" value="0.4" />

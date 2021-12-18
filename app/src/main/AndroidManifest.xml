@@ -14,10 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UrSkripsi">
         <activity
-            android:name=".ui.detail.DetailTaskActivity"
+            android:name="com.capstone.urskripsi.ui.content.home.task.detail.DetailTaskActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.content.task.AddTaskActivity"
+            android:name="com.capstone.urskripsi.ui.content.home.task.add.AddTaskActivity"
             android:exported="false" />
         <activity
             android:name=".ui.content.profile.about.DeveloperActivity"

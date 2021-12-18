@@ -14,9 +14,9 @@ import com.capstone.urskripsi.R
 import com.capstone.urskripsi.data.Task
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
 import com.capstone.urskripsi.ui.ViewModelFactory
-import com.capstone.urskripsi.ui.content.task.AddTaskActivity
-import com.capstone.urskripsi.ui.content.task.list.TaskAdapter
-import com.capstone.urskripsi.ui.content.task.list.TaskViewModel
+import com.capstone.urskripsi.ui.content.home.task.add.AddTaskActivity
+import com.capstone.urskripsi.ui.content.home.task.list.TaskAdapter
+import com.capstone.urskripsi.ui.content.home.task.list.TaskViewModel
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
@@ -42,12 +42,14 @@ class HomeFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
 
         mAuth = FirebaseAuth.getInstance()
-        val factory = ViewModelFactory.getInstance(requireContext())
+        val factory = ViewModelFactory.getInstance(requireActivity())
         viewModel = ViewModelProvider(this, factory)[TaskViewModel::class.java]
         viewModel.task.observe(viewLifecycleOwner, Observer(this::showRecyclerView))
 
-
-        binding?.layoutListTask?.tvAddTask?.setOnClickListener(this@HomeFragment)
+        binding?.apply {
+            layoutEmpty.btnTambahBaru.setOnClickListener(this@HomeFragment)
+            layoutListTask.tvAddTask.setOnClickListener(this@HomeFragment)
+        }
 
         retrieveData()
     }
@@ -58,7 +60,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             rvTask.setHasFixedSize(true)
             rvTask.layoutManager = LinearLayoutManager(context)
 
-            val taskAdapter = TaskAdapter {it, isCompleted ->
+            val taskAdapter = TaskAdapter { it, isCompleted ->
                 viewModel.completeTask(it, isCompleted)
             }
             taskAdapter.submitList(task)
@@ -71,15 +73,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val setEmail = emailUser?.replace('.', ',')
         databaseReference = FirebaseDatabase.getInstance().getReference("User/$setEmail/Data")
         databaseReference.keepSynced(true)
+        initialState()
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 if (snapshot.exists()) {
                     val name = snapshot.child(FIREBASE_NAME).value
                     binding?.apply {
-                        layoutTaskProgress.tvGreeting.text =
+                        layoutHomeHeader.tvGreeting.text =
                             getString(R.string.hello, name.toString())
                     }
                 }
+                finalState()
             }
 
             override fun onCancelled(error: DatabaseError) {}
@@ -89,30 +93,49 @@ class HomeFragment : Fragment(), View.OnClickListener {
     private fun initialState() {
         binding?.apply {
             progressBar.root.show()
-            layoutEmpty.root.hide()
-            layoutTaskProgress.root.hide()
+            layoutHomeHeader.root.hide()
         }
     }
 
     private fun finalState() {
-        binding?.apply {
-            progressBar.root.hide()
-            layoutEmpty.root.show()
-            layoutTaskProgress.root.show()
-        }
+        viewModel.task.observe(this, {
+            binding?.apply {
+                if (it.size == 0) {
+                    progressBar.root.hide()
+                    layoutEmpty.root.show()
+                    layoutListTask.root.hide()
+                    layoutHomeHeader.root.show()
+                    layoutHomeHeader.layoutTaskProgress.root.hide()
+                    layoutHomeHeader.tvDesc.text = getString(R.string.tambahkan_tugas)
+                } else {
+                    progressBar.root.hide()
+                    layoutEmpty.root.hide()
+                    layoutListTask.root.show()
+                    layoutHomeHeader.root.show()
+                    layoutHomeHeader.layoutTaskProgress.root.show()
+                    layoutHomeHeader.tvDesc.text =
+                        getString(R.string.yuk_lanjutkan_progress_skripsinya)
+                }
+            }
+        })
     }
 
     override fun onClick(view: View?) {
         if (view != null) {
-            when (view.id) {
-                binding?.layoutListTask?.tvAddTask?.id -> {
-                    val intent = Intent(requireContext(), AddTaskActivity::class.java)
-                    startActivity(intent)
+            binding?.apply {
+                when (view.id) {
+                    layoutEmpty.btnTambahBaru.id -> {
+                        val intent = Intent(requireContext(), AddTaskActivity::class.java)
+                        startActivity(intent)
+                    }
+                    layoutListTask.tvAddTask.id -> {
+                        val intent = Intent(requireContext(), AddTaskActivity::class.java)
+                        startActivity(intent)
+                    }
                 }
             }
         }
     }
-
 
     override fun onDestroyView() {
         super.onDestroyView()

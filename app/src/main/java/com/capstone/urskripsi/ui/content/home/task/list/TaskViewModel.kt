@@ -1,4 +1,4 @@
-package com.capstone.urskripsi.ui.content.task.list
+package com.capstone.urskripsi.ui.content.home.task.list
 
 import androidx.lifecycle.*
 import androidx.paging.PagedList

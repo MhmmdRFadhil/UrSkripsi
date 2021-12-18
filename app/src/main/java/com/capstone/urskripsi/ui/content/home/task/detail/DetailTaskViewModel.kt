@@ -1,4 +1,4 @@
-package com.capstone.urskripsi.ui.detail
+package com.capstone.urskripsi.ui.content.home.task.detail
 
 import androidx.lifecycle.*
 import com.capstone.urskripsi.data.Task

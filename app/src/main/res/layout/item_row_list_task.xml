@@ -27,7 +27,7 @@
             card_view:layout_constraintStart_toStartOf="parent"
             card_view:layout_constraintTop_toTopOf="parent" />
 
-        <com.capstone.urskripsi.ui.content.task.list.CustomTaskTitleView
+        <com.capstone.urskripsi.ui.content.home.task.list.CustomTaskTitleView
             android:id="@+id/tv_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

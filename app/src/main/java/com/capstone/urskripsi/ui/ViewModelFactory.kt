@@ -4,9 +4,9 @@ import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.urskripsi.data.TaskRepository
-import com.capstone.urskripsi.ui.content.task.AddTaskViewModel
-import com.capstone.urskripsi.ui.content.task.list.TaskViewModel
-import com.capstone.urskripsi.ui.detail.DetailTaskViewModel
+import com.capstone.urskripsi.ui.content.home.task.add.AddTaskViewModel
+import com.capstone.urskripsi.ui.content.home.task.list.TaskViewModel
+import com.capstone.urskripsi.ui.content.home.task.detail.DetailTaskViewModel
 
 class ViewModelFactory private constructor(private val repository: TaskRepository) :
     ViewModelProvider.Factory {
