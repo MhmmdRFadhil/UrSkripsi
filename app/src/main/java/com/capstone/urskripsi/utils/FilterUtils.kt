@@ -10,12 +10,10 @@ object FilterUtils {
             TaskFilterType.COMPLETED_TASKS -> {
                 simpleQuery.append("WHERE completed = 1")
             }
-            TaskFilterType.ACTIVE_TASKS -> {
+            TaskFilterType.IN_PROGRESS_TASK -> {
                 simpleQuery.append("WHERE completed = 0")
             }
-            else -> {
-                // ALL_TASKS
-            }
+            else -> {}
         }
         return SimpleSQLiteQuery(simpleQuery.toString())
     }

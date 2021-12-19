@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.BottomSheetDialogDeveloperBinding
 import com.capstone.urskripsi.utils.Utility.loadImageUrl
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -45,6 +46,10 @@ class DeveloperBottomSheetFragment(private val developer: Developer) : BottomShe
                 startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(developer.instagram)))
             }
         }
+    }
+
+    override fun getTheme(): Int {
+        return R.style.BottomSheetDialog_Rounded
     }
 
     override fun onDestroyView() {

@@ -23,8 +23,8 @@ class TaskAdapter(private val onCheckedChange: (Task, Boolean) -> Unit) :
         lateinit var getTask: Task
 
         fun bind(task: Task) {
+            getTask = task
             with(binding) {
-                getTask = task
                 tvTitle.text = task.title
                 Log.d("Title", task.title)
                 itemView.setOnClickListener {

@@ -100,8 +100,6 @@
     <string name="deskripsi">deskripsi</string>
     <string name="detail_task">Detail Task</string>
     <string name="hapus">Hapus</string>
-    <string name="task_marked_complete">Task marked completed</string>
-    <string name="task_marked_active">Task marked active</string>
     <string name="tambahkan_tugas">Buat daftar tugasmu</string>
 
     <!--Developer-->
@@ -121,5 +119,10 @@
 
     <!--Leaderboard-->
     <string name="done">selesai</string>
+
+    <!--Filter-->
+
+    <string name="sort_task">Urutkan tugas berdasarkan</string>
+    <string name="all">Semua</string>
 
 </resources>

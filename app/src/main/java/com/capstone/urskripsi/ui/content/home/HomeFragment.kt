@@ -9,7 +9,9 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.paging.PagedList
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.capstone.urskripsi.R
 import com.capstone.urskripsi.data.Task
 import com.capstone.urskripsi.databinding.FragmentHomeBinding
@@ -49,11 +51,17 @@ class HomeFragment : Fragment(), View.OnClickListener {
         binding?.apply {
             layoutEmpty.btnTambahBaru.setOnClickListener(this@HomeFragment)
             layoutListTask.tvAddTask.setOnClickListener(this@HomeFragment)
+            layoutHomeHeader.imgSort.setOnClickListener(this@HomeFragment)
         }
 
         retrieveData()
+        initAction()
     }
 
+    private fun showFilter() {
+        val taskFilterBottomSheetFragment = TaskFilterBottomSheetFragment()
+        taskFilterBottomSheetFragment.show(parentFragmentManager, "TAG")
+    }
 
     private fun showRecyclerView(task: PagedList<Task>) {
         binding?.layoutListTask?.apply {
@@ -120,6 +128,31 @@ class HomeFragment : Fragment(), View.OnClickListener {
         })
     }
 
+    private fun initAction() {
+        val itemTouchHelper = ItemTouchHelper(object : ItemTouchHelper.Callback() {
+            override fun getMovementFlags(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder
+            ): Int {
+                return makeMovementFlags(0, ItemTouchHelper.RIGHT)
+            }
+
+            override fun onMove(
+                recyclerView: RecyclerView,
+                viewHolder: RecyclerView.ViewHolder,
+                target: RecyclerView.ViewHolder
+            ): Boolean {
+                return false
+            }
+
+            override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                val task = (viewHolder as TaskAdapter.TaskViewHolder).getTask
+                viewModel.deleteTask(task)
+            }
+        })
+        itemTouchHelper.attachToRecyclerView(binding?.layoutListTask?.rvTask)
+    }
+
     override fun onClick(view: View?) {
         if (view != null) {
             binding?.apply {
@@ -132,6 +165,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
                         val intent = Intent(requireContext(), AddTaskActivity::class.java)
                         startActivity(intent)
                     }
+                    layoutHomeHeader.imgSort.id -> showFilter()
                 }
             }
         }

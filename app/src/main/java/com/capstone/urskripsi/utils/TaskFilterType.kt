@@ -4,7 +4,7 @@ enum class TaskFilterType {
 
     ALL_TASKS,
 
-    ACTIVE_TASKS,
+    IN_PROGRESS_TASK,
 
     COMPLETED_TASKS
 }
