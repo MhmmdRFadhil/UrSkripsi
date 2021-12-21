@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.urskripsi.data.Task
 import com.capstone.urskripsi.databinding.ActivityAddTaskBinding
 import com.capstone.urskripsi.ui.ViewModelFactory
+import com.capstone.urskripsi.utils.Calculation
 
 
 class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
@@ -33,6 +34,7 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
                     binding.edtDescription.text.toString().trim(),
                     false
                 )
+                Calculation.countAllData += 1
 
                 viewModel.addTask(newTask)
                 finish()

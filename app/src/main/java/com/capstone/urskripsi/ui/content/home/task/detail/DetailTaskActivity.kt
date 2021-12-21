@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.capstone.urskripsi.databinding.ActivityDetailTaskBinding
 import com.capstone.urskripsi.ui.ViewModelFactory
+import com.capstone.urskripsi.utils.Calculation
 import com.capstone.urskripsi.utils.Constant.Companion.TASK_ID
 
 class DetailTaskActivity : AppCompatActivity() {
@@ -40,6 +41,7 @@ class DetailTaskActivity : AppCompatActivity() {
 
         binding.btnDelete.setOnClickListener {
             viewModel.deleteTask()
+            Calculation.countAllData -= 1
             finish()
         }
     }

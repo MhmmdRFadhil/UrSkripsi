@@ -1,5 +1,6 @@
 package com.capstone.urskripsi.data
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
@@ -23,4 +24,6 @@ interface TaskDao {
     @Query("UPDATE tasks SET is_completed = :completed WHERE id = :taskId")
     suspend fun updateCompleted(taskId: Int, completed: Boolean)
 
+    @Query("SELECT COUNT(*) FROM tasks WHERE is_completed = 1")
+    suspend fun getCountCompleted(): Int
 }

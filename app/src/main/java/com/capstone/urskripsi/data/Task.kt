@@ -19,12 +19,12 @@ data class Task(
 
     @NonNull
     @ColumnInfo(name = TITLE)
-    val title: String,
+    val title: String = "",
 
     @NonNull
     @ColumnInfo(name = DESCRIPTION)
-    val description: String,
+    val description: String = "",
 
     @ColumnInfo(name = IS_COMPLETED)
-    val isCompleted: Boolean
+    var isCompleted: Boolean = false
 )

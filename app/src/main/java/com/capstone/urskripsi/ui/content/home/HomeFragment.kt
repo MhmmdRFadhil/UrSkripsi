@@ -2,6 +2,7 @@ package com.capstone.urskripsi.ui.content.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -17,6 +18,7 @@ import com.capstone.urskripsi.ui.ViewModelFactory
 import com.capstone.urskripsi.ui.content.home.task.add.AddTaskActivity
 import com.capstone.urskripsi.ui.content.home.task.list.TaskAdapter
 import com.capstone.urskripsi.ui.content.home.task.list.TaskViewModel
+import com.capstone.urskripsi.utils.Calculation
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
@@ -54,6 +56,9 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         retrieveData()
         initAction()
+
+        // binding?.layoutHomeHeader?.layoutTaskProgress?.progressIndicatorBar?.progress =
+        // ((Calculation.countAllDataIsCompleted / Calculation.countAllDataIsCompleted) * 100)
     }
 
     private fun showFilter() {
@@ -71,6 +76,16 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
             taskAdapter.submitList(task)
             rvTask.adapter = taskAdapter
+
+            // solved
+            Calculation.countAllData = taskAdapter.itemCount
+            Log.d("HomeFragment", "total : ${Calculation.countAllData}")
+
+            // Calculation.countAllDataIsCompleted = viewModel.getCountIsCompleted()
+
+            // totalComplete : StandaloneCoroutine{Active}@194fef7
+            val count = viewModel.getCountIsCompleted()
+            Log.d("HomeFragment", "totalComplete : $count")
         }
     }
 

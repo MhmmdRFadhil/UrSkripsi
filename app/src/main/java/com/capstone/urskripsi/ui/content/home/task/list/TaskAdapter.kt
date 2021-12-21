@@ -12,32 +12,11 @@ import com.capstone.urskripsi.databinding.ItemRowListTaskBinding
 import com.capstone.urskripsi.ui.content.home.task.list.CustomTaskTitleView.Companion.DONE
 import com.capstone.urskripsi.ui.content.home.task.list.CustomTaskTitleView.Companion.NORMAL
 import com.capstone.urskripsi.ui.content.home.task.detail.DetailTaskActivity
+import com.capstone.urskripsi.utils.Calculation
 import com.capstone.urskripsi.utils.Constant.Companion.TASK_ID
 
 class TaskAdapter(private val onCheckedChange: (Task, Boolean) -> Unit) :
     PagedListAdapter<Task, TaskAdapter.TaskViewHolder>(DIFF_CALLBACK) {
-
-    inner class TaskViewHolder(val binding: ItemRowListTaskBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
-        lateinit var getTask: Task
-
-        fun bind(task: Task) {
-            getTask = task
-            with(binding) {
-                tvTitle.text = task.title
-                Log.d("Title", task.title)
-                itemView.setOnClickListener {
-                    val intent = Intent(itemView.context, DetailTaskActivity::class.java)
-                    intent.putExtra(TASK_ID, task.id)
-                    itemView.context.startActivity(intent)
-                }
-                cbCompleted.setOnClickListener {
-                    onCheckedChange(task, !task.isCompleted)
-                }
-            }
-        }
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val view = ItemRowListTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -56,6 +35,28 @@ class TaskAdapter(private val onCheckedChange: (Task, Boolean) -> Unit) :
                 else -> {
                     cbCompleted.isChecked = false
                     tvTitle.state = NORMAL
+                }
+            }
+        }
+    }
+
+    inner class TaskViewHolder(val binding: ItemRowListTaskBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+
+        lateinit var getTask: Task
+
+        fun bind(task: Task) {
+            getTask = task
+            with(binding) {
+                tvTitle.text = task.title
+                Log.d("Title", task.title)
+                itemView.setOnClickListener {
+                    val intent = Intent(itemView.context, DetailTaskActivity::class.java)
+                    intent.putExtra(TASK_ID, task.id)
+                    itemView.context.startActivity(intent)
+                }
+                cbCompleted.setOnClickListener {
+                    onCheckedChange(task, !task.isCompleted)
                 }
             }
         }

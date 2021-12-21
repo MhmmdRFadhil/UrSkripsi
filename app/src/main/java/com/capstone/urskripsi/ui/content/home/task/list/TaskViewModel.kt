@@ -5,9 +5,11 @@ import androidx.paging.PagedList
 import com.capstone.urskripsi.data.Task
 import com.capstone.urskripsi.data.TaskRepository
 import com.capstone.urskripsi.utils.TaskFilterType
+import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class TaskViewModel(private val taskRepository: TaskRepository): ViewModel() {
+
     private val _filter = MutableLiveData<TaskFilterType>()
 
     val task: LiveData<PagedList<Task>> = _filter.switchMap {
@@ -24,6 +26,10 @@ class TaskViewModel(private val taskRepository: TaskRepository): ViewModel() {
 
     fun completeTask(task: Task, completed: Boolean) = viewModelScope.launch {
         taskRepository.completeTask(task, completed)
+    }
+
+    fun getCountIsCompleted() = viewModelScope.launch {
+        taskRepository.getCountCompleted()
     }
 
     fun deleteTask(task: Task) {
