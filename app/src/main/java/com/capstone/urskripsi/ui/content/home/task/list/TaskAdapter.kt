@@ -1,7 +1,6 @@
 package com.capstone.urskripsi.ui.content.home.task.list
 
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
@@ -12,11 +11,11 @@ import com.capstone.urskripsi.databinding.ItemRowListTaskBinding
 import com.capstone.urskripsi.ui.content.home.task.list.CustomTaskTitleView.Companion.DONE
 import com.capstone.urskripsi.ui.content.home.task.list.CustomTaskTitleView.Companion.NORMAL
 import com.capstone.urskripsi.ui.content.home.task.detail.DetailTaskActivity
-import com.capstone.urskripsi.utils.Calculation
 import com.capstone.urskripsi.utils.Constant.Companion.TASK_ID
 
 class TaskAdapter(private val onCheckedChange: (Task, Boolean) -> Unit) :
     PagedListAdapter<Task, TaskAdapter.TaskViewHolder>(DIFF_CALLBACK) {
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TaskViewHolder {
         val view = ItemRowListTaskBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -49,7 +48,6 @@ class TaskAdapter(private val onCheckedChange: (Task, Boolean) -> Unit) :
             getTask = task
             with(binding) {
                 tvTitle.text = task.title
-                Log.d("Title", task.title)
                 itemView.setOnClickListener {
                     val intent = Intent(itemView.context, DetailTaskActivity::class.java)
                     intent.putExtra(TASK_ID, task.id)

@@ -6,6 +6,7 @@ import com.capstone.urskripsi.data.Task
 import com.capstone.urskripsi.data.TaskRepository
 import com.capstone.urskripsi.utils.TaskFilterType
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class TaskViewModel(private val taskRepository: TaskRepository): ViewModel() {
@@ -28,9 +29,7 @@ class TaskViewModel(private val taskRepository: TaskRepository): ViewModel() {
         taskRepository.completeTask(task, completed)
     }
 
-    fun getCountIsCompleted() = viewModelScope.launch {
-        taskRepository.getCountCompleted()
-    }
+    fun getCountIsCompleted(): LiveData<Int> = taskRepository.getCountCompleted()
 
     fun deleteTask(task: Task) {
         viewModelScope.launch {

@@ -6,10 +6,8 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.capstone.urskripsi.utils.FilterUtils
 import com.capstone.urskripsi.utils.TaskFilterType
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.runBlocking
-import kotlinx.coroutines.withContext
 
 class TaskRepository(private val taskDao: TaskDao) {
 
@@ -39,8 +37,8 @@ class TaskRepository(private val taskDao: TaskDao) {
         taskDao.updateCompleted(task.id, isCompleted)
     }
 
-    suspend fun getCountCompleted(): Int  {
-        return taskDao.getCountCompleted()
+    fun getCountCompleted(): LiveData<Int>  {
+        return taskDao.getCount()
     }
 
     companion object {

@@ -72,6 +72,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
             rvTask.layoutManager = LinearLayoutManager(context)
 
             val taskAdapter = TaskAdapter { it, isCompleted ->
+
                 viewModel.completeTask(it, isCompleted)
             }
             taskAdapter.submitList(task)
@@ -84,8 +85,10 @@ class HomeFragment : Fragment(), View.OnClickListener {
             // Calculation.countAllDataIsCompleted = viewModel.getCountIsCompleted()
 
             // totalComplete : StandaloneCoroutine{Active}@194fef7
-            val count = viewModel.getCountIsCompleted()
-            Log.d("HomeFragment", "totalComplete : $count")
+            viewModel.getCountIsCompleted().observe(viewLifecycleOwner, {
+                val count = it
+                Log.d("HomeFragment", "totalComplete : $count")
+            })
         }
     }
 
