@@ -2,9 +2,7 @@ package com.capstone.urskripsi.ui.content.home
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -59,7 +57,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
     }
 
     private fun showFilter() {
-        val taskFilterBottomSheetFragment = TaskFilterBottomSheetFragment()
+        val taskFilterBottomSheetFragment = TaskFilterBottomSheetFragment(viewModel)
         taskFilterBottomSheetFragment.show(parentFragmentManager, "TAG")
     }
 
