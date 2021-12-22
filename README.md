@@ -42,12 +42,11 @@ This repository is the Capstone Project in Studi Independen Kampus Merdeka [Dico
         width="200" />
 </p>
 
-## Feature
+## Features
 Several features in this application:
-- Search github account
-- Two languages supported
-- Show detail on github account
-- Favorite on github account
+- Tracking your task
+- Progress to know your task
+- Showing another user to compete
 
 ## Library
 Some libraries I used to:
