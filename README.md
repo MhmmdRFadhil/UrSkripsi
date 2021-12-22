@@ -1,22 +1,43 @@
 <img src="/Screenshot/Logo.png"
         alt="Logo"        
         width="1000" />
+        
 # UrSkripsi : Capstone Project
 This repository is the Capstone Project in Studi Independen Kampus Merdeka [Dicoding](dicoding.com) . This application is purpose to help college student tracking their essay or thesis.<br>
  [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html)
 
-## Screenshot
+## Screenshots
 <p align="center">
-    <img src="/Screenshots/1.jpg"
+    <img src="/Screenshot/1.jpg"
         alt="Splash Screen"    
         style="margin-right: 10px;"    
         width="200" />
-    <img src="/Screenshots/2.jpg"
+    <img src="/Screenshot/2.jpg"
+        alt="On Boarding"    
+        style="margin-right: 10px;"    
+        width="200" />
+    <img src="/Screenshot/5.jpg"
+        alt="Login screen"    
+        style="margin-right: 10px;"    
+        width="200" />
+    <img src="/Screenshot/8.jpg"
         alt="Main Activity"    
         style="margin-right: 10px;"    
         width="200" />
-    <img src="/Screenshots/3.jpg"
-        alt="Setting screen"    
+     <img src="/Screenshot/9.jpg"
+        alt="Detail"    
+        style="margin-right: 10px;"    
+        width="200" />
+    <img src="/Screenshot/10.jpg"
+        alt="Leaderboard Screen"    
+        style="margin-right: 10px;"    
+        width="200" />
+    <img src="/Screenshot/11.jpg"
+        alt="Profile screen"    
+        style="margin-right: 10px;"    
+        width="200" />
+     <img src="/Screenshot/14.jpg"
+        alt="Profile screen"    
         style="margin-right: 10px;"    
         width="200" />
 </p>
