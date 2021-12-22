@@ -3,7 +3,7 @@
         width="1000" />
         
 # UrSkripsi : Capstone Project
-This repository is the Capstone Project in Studi Independen Kampus Merdeka [Dicoding](dicoding.com) . This application is purpose to help college student tracking their essay or thesis.<br>
+This repository is the Capstone Project in Studi Independen Kampus Merdeka [Dicoding](dicoding.com) . This application is purpose to help college student tracking their essay or thesis.<br><br>
  [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html)
 
 ## Screenshots
