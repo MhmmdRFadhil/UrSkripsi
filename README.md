@@ -6,7 +6,7 @@
 This repository is the Capstone Project in Studi Independen Kampus Merdeka [Dicoding](dicoding.com) . This application is purpose to help college student tracking their essay or thesis.<br><br>
  [![Platform](https://img.shields.io/badge/platform-Android-green.svg)](http://developer.android.com/index.html)
 
-## Screenshots
+## Screenshot
 <p align="center">
     <img src="/Screenshot/1.jpg"
         alt="Splash Screen"    
@@ -42,7 +42,7 @@ This repository is the Capstone Project in Studi Independen Kampus Merdeka [Dico
         width="200" />
 </p>
 
-## Features
+## Feature
 Several features in this application:
 - Tracking your task
 - Progress to know your task
@@ -65,9 +65,6 @@ Some libraries I used to:
 - LiveData
 - etc
 
-## Disclaimer
-DO NOT COPYING 100%. Use this for reference on your app or your Dicoding account will get penalty.
-
-## Support Us
-All you have to do just star this repository and follow my github account :)<br>
-Thank You, *cheers*
+## Contact
+Naufal Abiyyu Mayusuf - [LinkedIn](https://www.linkedin.com/in/naufal-abiyyu/)
+Muhammad Rizqan Fadhil - [LinkedIn]()
