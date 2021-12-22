@@ -25,4 +25,7 @@ interface TaskDao {
 
     @Query("SELECT COUNT(*) FROM tasks WHERE is_completed = 1")
     fun getCount(): LiveData<Int>
+
+    @Query("SELECT COUNT(*) FROM tasks")
+    fun getCountTasks(): LiveData<Int>
 }

@@ -47,6 +47,7 @@ class HomeFragment : Fragment(), View.OnClickListener {
         val factory = ViewModelFactory.getInstance(requireActivity())
         viewModel = ViewModelProvider(this, factory)[TaskViewModel::class.java]
         viewModel.task.observe(viewLifecycleOwner, Observer(this::showRecyclerView))
+        calculationProgress()
 
         binding?.apply {
             layoutEmpty.btnTambahBaru.setOnClickListener(this@HomeFragment)
@@ -56,14 +57,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
 
         retrieveData()
         initAction()
-
-        // binding?.layoutHomeHeader?.layoutTaskProgress?.progressIndicatorBar?.progress =
-        // ((Calculation.countAllDataIsCompleted / Calculation.countAllDataIsCompleted) * 100)
     }
 
     private fun showFilter() {
         val taskFilterBottomSheetFragment = TaskFilterBottomSheetFragment(viewModel)
-        taskFilterBottomSheetFragment.show(parentFragmentManager, "TAG")
+        taskFilterBottomSheetFragment.show(parentFragmentManager, TAG)
     }
 
     private fun showRecyclerView(task: PagedList<Task>) {
@@ -77,19 +75,33 @@ class HomeFragment : Fragment(), View.OnClickListener {
             }
             taskAdapter.submitList(task)
             rvTask.adapter = taskAdapter
-
-            // solved
-            Calculation.countAllData = taskAdapter.itemCount
-            Log.d("HomeFragment", "total : ${Calculation.countAllData}")
-
-            // Calculation.countAllDataIsCompleted = viewModel.getCountIsCompleted()
-
-            // totalComplete : StandaloneCoroutine{Active}@194fef7
-            viewModel.getCountIsCompleted().observe(viewLifecycleOwner, {
-                val count = it
-                Log.d("HomeFragment", "totalComplete : $count")
-            })
         }
+
+        if (Calculation.countAllData != 0.0) {
+            val count = ((Calculation.countAllDataIsCompleted / Calculation.countAllData) * 100).toInt()
+            binding?.layoutHomeHeader?.layoutTaskProgress?.progressIndicatorBar?.progress =
+                count
+            binding?.layoutHomeHeader?.layoutTaskProgress?.tvNumberPercentage?.text =
+                count.toString()
+
+            Log.d(TAG, CALCULATION + "$count")
+        }
+    }
+
+    private fun calculationProgress() {
+
+        viewModel.getCountAllTasks().observe(viewLifecycleOwner, {
+            Calculation.countAllData = it.toDouble()
+
+            Log.d(TAG, TOTAL + "${Calculation.countAllData}")
+
+        })
+
+        viewModel.getCountIsCompleted().observe(viewLifecycleOwner, {
+            Calculation.countAllDataIsCompleted = it.toDouble()
+            Log.d(TAG, TOTAL_COMPLETE + "${Calculation.countAllDataIsCompleted}")
+
+        })
     }
 
     private fun retrieveData() {
@@ -190,5 +202,12 @@ class HomeFragment : Fragment(), View.OnClickListener {
     override fun onDestroyView() {
         super.onDestroyView()
         binding = null
+    }
+
+    companion object {
+        private const val TAG = "HomeFragment"
+        private const val CALCULATION = "Calculation : "
+        private const val TOTAL = "Total : "
+        private const val TOTAL_COMPLETE = "TotalComplete : "
     }
 }

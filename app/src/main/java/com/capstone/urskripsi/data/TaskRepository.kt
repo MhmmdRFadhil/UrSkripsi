@@ -39,6 +39,10 @@ class TaskRepository(private val taskDao: TaskDao) {
         return taskDao.getCount()
     }
 
+    fun getCountAllTasks(): LiveData<Int> {
+        return taskDao.getCountTasks()
+    }
+
     companion object {
         const val PAGE_SIZE = 30
         const val PLACEHOLDERS = true

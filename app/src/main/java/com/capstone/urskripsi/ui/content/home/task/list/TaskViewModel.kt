@@ -29,6 +29,8 @@ class TaskViewModel(private val taskRepository: TaskRepository): ViewModel() {
 
     fun getCountIsCompleted(): LiveData<Int> = taskRepository.getCountCompleted()
 
+    fun getCountAllTasks(): LiveData<Int> = taskRepository.getCountAllTasks()
+
     fun deleteTask(task: Task) {
         viewModelScope.launch {
             taskRepository.deleteTask(task)
