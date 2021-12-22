@@ -67,4 +67,4 @@ Some libraries I used to:
 
 ## Contact
 Naufal Abiyyu Mayusuf - [LinkedIn](https://www.linkedin.com/in/naufal-abiyyu/)<br>
-Muhammad Rizqan Fadhil - [LinkedIn]()
+Muhammad Rizqan Fadhil - [LinkedIn](https://www.linkedin.com/in/rzqnfadhil/)
