@@ -66,5 +66,5 @@ Some libraries I used to:
 - etc
 
 ## Contact
-Naufal Abiyyu Mayusuf - [LinkedIn](https://www.linkedin.com/in/naufal-abiyyu/)
+Naufal Abiyyu Mayusuf - [LinkedIn](https://www.linkedin.com/in/naufal-abiyyu/)<br>
 Muhammad Rizqan Fadhil - [LinkedIn]()
