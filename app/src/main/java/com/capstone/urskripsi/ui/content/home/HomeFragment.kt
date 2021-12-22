@@ -20,6 +20,7 @@ import com.capstone.urskripsi.ui.content.home.task.list.TaskAdapter
 import com.capstone.urskripsi.ui.content.home.task.list.TaskViewModel
 import com.capstone.urskripsi.utils.Calculation
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
+import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_PROGRESS
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
 import com.google.firebase.auth.FirebaseAuth
@@ -83,6 +84,11 @@ class HomeFragment : Fragment(), View.OnClickListener {
                 count
             binding?.layoutHomeHeader?.layoutTaskProgress?.tvNumberPercentage?.text =
                 count.toString()
+
+            val map = HashMap<String, Any>()
+            map[FIREBASE_PROGRESS] = count
+
+            databaseReference.updateChildren(map)
 
             Log.d(TAG, CALCULATION + "$count")
         }

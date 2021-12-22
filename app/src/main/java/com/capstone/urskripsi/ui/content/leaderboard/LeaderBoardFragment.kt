@@ -6,15 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.capstone.urskripsi.MainActivity
-import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.FragmentLeaderBoardBinding
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_NAME
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_PHOTO
 import com.capstone.urskripsi.utils.Constant.Companion.FIREBASE_PROGRESS
 import com.capstone.urskripsi.utils.Utility.hide
 import com.capstone.urskripsi.utils.Utility.show
-import com.capstone.urskripsi.utils.Utility.simpleToolbar
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
 
@@ -35,13 +32,6 @@ class LeaderBoardFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        if (activity != null) {
-            (activity as MainActivity).simpleToolbar(
-                getString(R.string.leaderboard),
-                binding?.toolbar?.root,
-                false
-            )
-        }
 
         mAuth = FirebaseAuth.getInstance()
         leaderBoard = ArrayList()
