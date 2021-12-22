@@ -2,11 +2,14 @@ package com.capstone.urskripsi.ui.content.home.task.detail
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.lifecycle.ViewModelProvider
+import com.capstone.urskripsi.R
 import com.capstone.urskripsi.databinding.ActivityDetailTaskBinding
 import com.capstone.urskripsi.ui.ViewModelFactory
 import com.capstone.urskripsi.utils.Calculation
 import com.capstone.urskripsi.utils.Constant.Companion.TASK_ID
+import com.capstone.urskripsi.utils.Utility.simpleToolbar
 
 class DetailTaskActivity : AppCompatActivity() {
 
@@ -16,6 +19,7 @@ class DetailTaskActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        simpleToolbar(getString(R.string.detail_task), binding.toolbar.root, true)
 
         setDetailContent()
     }
@@ -43,6 +47,16 @@ class DetailTaskActivity : AppCompatActivity() {
             viewModel.deleteTask()
             Calculation.countAllData -= 1
             finish()
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

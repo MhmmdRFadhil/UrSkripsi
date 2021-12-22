@@ -6,8 +6,6 @@ import androidx.paging.LivePagedListBuilder
 import androidx.paging.PagedList
 import com.capstone.urskripsi.utils.FilterUtils
 import com.capstone.urskripsi.utils.TaskFilterType
-import kotlinx.coroutines.async
-import kotlinx.coroutines.runBlocking
 
 class TaskRepository(private val taskDao: TaskDao) {
 

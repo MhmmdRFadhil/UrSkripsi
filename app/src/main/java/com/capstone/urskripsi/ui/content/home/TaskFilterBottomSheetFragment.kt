@@ -10,8 +10,8 @@ import com.capstone.urskripsi.ui.content.home.task.list.TaskViewModel
 import com.capstone.urskripsi.utils.TaskFilterType
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 
-class TaskFilterBottomSheetFragment(private val viewModel: TaskViewModel) : BottomSheetDialogFragment() {
-
+class TaskFilterBottomSheetFragment(private val viewModel: TaskViewModel) :
+    BottomSheetDialogFragment() {
     private var binding: BottomSheetDialogSortTaskBinding? = null
 
     override fun onCreateView(
@@ -28,16 +28,18 @@ class TaskFilterBottomSheetFragment(private val viewModel: TaskViewModel) : Bott
         getData()
     }
 
+
     private fun getData() {
         binding?.apply {
             rgSort.setOnCheckedChangeListener { _, p1 ->
-                viewModel.filter(
-                    when (p1) {
-                        R.id.rb_completed -> TaskFilterType.COMPLETED_TASKS
-                        R.id.rb_in_progress -> TaskFilterType.IN_PROGRESS_TASK
-                        else -> TaskFilterType.ALL_TASKS
+                when (p1) {
+                    R.id.rb_completed -> {
+                        viewModel.filter(TaskFilterType.COMPLETED_TASKS)
                     }
-                )
+                    else -> {
+                        viewModel.filter(TaskFilterType.ALL_TASKS)
+                    }
+                }
             }
         }
     }

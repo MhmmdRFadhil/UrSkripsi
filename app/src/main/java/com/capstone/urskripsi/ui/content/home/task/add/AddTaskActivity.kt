@@ -2,12 +2,15 @@ package com.capstone.urskripsi.ui.content.home.task.add
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
+import com.capstone.urskripsi.R
 import com.capstone.urskripsi.data.Task
 import com.capstone.urskripsi.databinding.ActivityAddTaskBinding
 import com.capstone.urskripsi.ui.ViewModelFactory
 import com.capstone.urskripsi.utils.Calculation
+import com.capstone.urskripsi.utils.Utility.simpleToolbar
 
 
 class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
@@ -18,6 +21,7 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         binding = ActivityAddTaskBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        simpleToolbar(getString(R.string.buat_task_baru), binding.toolbar.root, true)
 
         binding.btnTambah.setOnClickListener(this)
     }
@@ -39,6 +43,16 @@ class AddTaskActivity : AppCompatActivity(), View.OnClickListener {
                 viewModel.addTask(newTask)
                 finish()
             }
+        }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            android.R.id.home -> {
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }
