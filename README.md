@@ -65,6 +65,10 @@ Some libraries I used to:
 - LiveData
 - etc
 
+## Guide
+This is a guide or how to use UrSkripsi App.<br>
+Link : https://bit.ly/3EqKbd4 (Bahasa Indonesia)
+
 ## Contact
 Naufal Abiyyu Mayusuf - [LinkedIn](https://www.linkedin.com/in/naufal-abiyyu/)<br>
 Muhammad Rizqan Fadhil - [LinkedIn](https://www.linkedin.com/in/rzqnfadhil/)
